@@ -1,6 +1,6 @@
 {include file="findInclude:common/templates/header.tpl"}
 
-{include file="findInclude:common/templates/search.tpl" placeholder="Search Map" tip=$searchTip}
+{include file="findInclude:common/templates/search.tpl"}
 
 <div class="nonfocal">
   <h3>{$browseHint}</h3>
@@ -14,7 +14,7 @@
 {include file="findInclude:common/templates/navlist.tpl" navlistItems=$bookmarkLink secondary=true}
 {/if}
 
-{include file="findInclude:common/templates/navlist.tpl" navlistItems=$categories}
+{include file="findInclude:common/templates/navlist.tpl" navlistItems=$categories navlistID="categories"}
 
 {if $clearLink}
 {include file="findInclude:common/templates/navlist.tpl" navlistItems=$clearLink secondary=true}

@@ -1,5 +1,9 @@
 var currentTab;
 
+String.prototype.strip = function() {
+    return this.replace(/^\s+/, '').replace(/\s+$/, '');
+}
+
 function showTab(strID, objTrigger) {
 // Displays the tab with ID strID
 	var objTab = document.getElementById(strID);
@@ -7,54 +11,94 @@ function showTab(strID, objTrigger) {
 		show(strID);
 		if(currentTab && (currentTab != objTab)) {
 			hide(currentTab.id);
-			currentTab.style.display = "none";
+			//currentTab.style.display = "none";
 		}
 	}
 	currentTab = objTab; // Remember which is the currently displayed tab
 	
 	// Set the clicked tab to look current
 	var objTabs = document.getElementById("tabs");
-	var arrTabs = objTabs.getElementsByTagName("li");
-	if(objTrigger) {
-		for(var i=0; i<arrTabs.length; i++) {
-			arrTabs[i].className="";
-		}
-		var objTriggerTab = objTrigger.parentNode;
-		if(objTriggerTab) {
-			objTriggerTab.className="active";
-		}
-	} 
-	
-	// fake resize event in case tab body was resized while hidden 
-	var e = document.createEvent('HTMLEvents');
-	e.initEvent('resize', true, true);
-	window.dispatchEvent(e);
+  if (objTabs) {
+    var arrTabs = objTabs.getElementsByTagName("li");
+    if(objTrigger) {
+      for(var i=0; i<arrTabs.length; i++) {
+        arrTabs[i].className="";
+      }
+      var objTriggerTab = objTrigger.parentNode;
+      if(objTriggerTab) {
+        objTriggerTab.className="active";
+      }
+    }
+
+    // fake resize event in case tab body was resized while hidden 
+    if (document.createEvent) {
+      var e = document.createEvent('HTMLEvents');
+      e.initEvent('resize', true, true);
+      window.dispatchEvent(e);
+    
+    } else if( document.createEventObject ) {
+      var e = document.createEventObject();
+      document.documentElement.fireEvent('onresize', e);
+    }
+  }
 	
 	onDOMChange();
 }
 
 function rotateScreen() {
-  // Switch stylesheet and viewport based on screen orientation
-	switch(window.orientation) {
-		case 0:
-		case 180:
-        setOrientation('portrait');
-		    break;
+  setOrientation(getOrientation());
+  setTimeout(scrollToTop, 500);
+}
 
-		case -90:
-		case 90:
-        setOrientation('landscape');
-		    break;
+function getOrientation() {
+    if (typeof getOrientation.orientationIsFlipped == 'undefined') {
+        // detect how we are detecting orientation
+        getOrientation.orientationIsFlipped = false;
+        
+        if (!('orientation' in window)) {
+            getOrientation.orientationMethod = 'size';
+        } else {
+            getOrientation.orientationMethod = 'orientation';
+            var width = document.documentElement.clientWidth || document.body.clientWidth;
+            var height = document.documentElement.clientHeight || document.body.clientHeight;
+            
+            /* at this point the method of orientation detection is not perfect */
+            if (navigator.userAgent.match(/(PlayBook.+RIM Tablet|Android 3\.\d)/)) {
+                getOrientation.orientationIsFlipped = true;
+            }
+        }
+    }
 
-    default: 
-        setOrientation('portrait');
-		    break;
-	}
-	setTimeout(scrollToTop, 500);
+    switch (getOrientation.orientationMethod) {
+        case 'size':
+            var width = document.documentElement.clientWidth || document.body.clientWidth;
+            var height = document.documentElement.clientHeight || document.body.clientHeight;
+
+            return (width > height) ? 'landscape' : 'portrait';
+            break;
+
+        case 'orientation':
+            switch (window.orientation) {
+                case 0:
+                case 180:
+                    return getOrientation.orientationIsFlipped ? 'landscape' : 'portrait';
+                    break;
+                
+                case 90:
+                case -90:
+                    return getOrientation.orientationIsFlipped ? 'portrait': 'landscape';
+                    break;
+            }
+    }
 }
 
 function setOrientation(orientation) {
-    document.getElementsByTagName("body")[0].className = orientation;
+    var body = document.getElementsByTagName("body")[0];
+ 
+ //remove existing portrait/landscape class if there
+    removeClass(body, 'portrait');
+    removeClass(body, 'landscape');
+    addClass(body, orientation);
 }
 
 
@@ -62,8 +106,7 @@ function showLoadingMsg(strID) {
 // Show a temporary loading message in the element with ID strID
 	var objToStuff = document.getElementById(strID);
 	if(objToStuff) {
-		objToStuff.style.height = objToStuff.offsetHeight + "px";
-		objToStuff.innerHTML = "<div class=\"loading\"><img src=\"../Webkit/images/loading.gif\" width=\"27\" height=\"21\" alt=\"\" align=\"absmiddle\" />Loading data...</div >";
+		objToStuff.innerHTML = "<div class=\"loading\"><img src=\"../common/images/loading.gif\" width=\"27\" height=\"21\" alt=\"\" align=\"absmiddle\" />Loading data...</div >";
 	}
 	onDOMChange();
 }
@@ -169,7 +212,7 @@ function addClass(ele,cls) {
 function removeClass(ele,cls) {
     if (hasClass(ele,cls)) {
         var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-        ele.className=ele.className.replace(reg,' ');
+        ele.className=ele.className.replace(reg,' ').strip();
     }
 }
         
@@ -183,8 +226,10 @@ function toggleClass(ele, cls) {
 
 // Share-related functions
 function showShare() {
+    if (!document.getElementById("sharesheet")) {
+        return;
+    }
 	document.getElementById("sharesheet").style.display="block";
-	document.addEventListener('touchmove', doNotScroll, true);
 	var iframes = document.getElementsByTagName('iframe');
 	for (var i=0; i<iframes.length; i++) {
 	    iframes[i].style.visibility = 'hidden';
@@ -192,36 +237,24 @@ function showShare() {
 	window.scrollTo(0,0);
 }
 function hideShare() {
+    if (!document.getElementById("sharesheet")) {
+        return;
+    }
 	document.getElementById("sharesheet").style.display="none";
-	document.removeEventListener('touchmove', doNotScroll, true);
 	var iframes = document.getElementsByTagName('iframe');
 	for (var i=0; i<iframes.length; i++) {
 	    iframes[i].style.visibility = 'visible';
 	}
 }
-function doNotScroll( event ) {
-	event.preventDefault(); event.stopPropagation();
-}
 
 // Bookmarks
-function setBookmarkStates(name, item) {
-  var bookmark = document.getElementById("bookmark");
-  var items = getCookieArrayValue(name);
-  for (var i = 0; i < items.length; i++) {
-    if (items[i] == item) {
-      addClass(bookmark, "on");
-      break;
-    }
-  }
-  bookmark.addEventListener("touchstart", function() {
-      addClass(bookmark, "pressed");
-  }, false);
-  bookmark.addEventListener("touchend", function() {
-      removeClass(bookmark, "pressed");
-  }, false);
-}
-
 function toggleBookmark(name, item, expireseconds, path) {
+  // facility for module to respond to bookmark state change
+  if (typeof moduleBookmarkWillToggle != 'undefined') {
+    $result = moduleBookmarkWillToggle(name, item, expireseconds, path);
+    if ($result === false) { return; }
+  }
+
   var bookmark = document.getElementById("bookmark");
   toggleClass(bookmark, "on");
   var items = getCookieArrayValue(name);
@@ -242,4 +275,54 @@ function toggleBookmark(name, item, expireseconds, path) {
     }
   }
   setCookieArrayValue(name, newItems, expireseconds, path);
+  
+  // facility for module to respond to bookmark state change
+  if (typeof moduleBookmarkToggled != 'undefined') {
+    moduleBookmarkToggled(name, item, expireseconds, path);
+  }
 }
+
+// TODO this needs to handle encoded strings and parameter separators (&amp;)
+function apiRequest(baseURL, params, successCallback, errorCallback) {
+  var urlParts = [];
+  for (var paramName in params) {
+    urlParts.push(paramName + "=" + params[paramName]);
+  }
+  var url = baseURL + "?" + urlParts.join("&");
+  var httpRequest = new XMLHttpRequest();
+
+  httpRequest.open("GET", url, true);
+  httpRequest.onreadystatechange = function() {
+    // TODO better definition of error conditions below
+    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+      var obj;
+      if (window.JSON) {
+          obj = JSON.parse(httpRequest.responseText);
+          // TODO: catch SyntaxError
+      } else {
+          obj = eval('(' + httpRequest.responseText + ')');
+      }
+      if (obj !== undefined) {
+        if ("error" in obj && obj["error"] !== null) {
+          errorCallback(0, obj["error"]);
+        } else if ("response" in obj) {
+          successCallback(obj["response"]);
+        } else {
+          errorCallback(1, "response not found");
+        }
+      } else {
+        errorCallback(2, "failed to parse response");
+      }
+    }
+  }
+  httpRequest.send(null);
+}
+
+
+
+
+
+
+
+
+

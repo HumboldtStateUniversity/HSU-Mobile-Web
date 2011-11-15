@@ -2,11 +2,11 @@
 
 {block name="newsHeader"}
   {if count($sections) > 1}
-    <table id="newsHeader">
+    <table id="newsHeader" class="section-search">
       <tr><td id="categoryformcontainer">
         <form method="get" action="index.php">
           <fieldset>
-            <label for="section">Section:</label>
+            <label for="section" class="formlabel">Section:</label>
             {$categorySelect}
             
             {foreach $hiddenArgs as $arg => $value}
@@ -18,12 +18,26 @@
           </fieldset>
         </form>
       </td><td id="searchformcontainer">
-        <form method="get" action="search.php">
-          {include file="findInclude:common/templates/search.tpl" insideForm=true placeholder="Search "|cat:$moduleName extraArgs=$hiddenArgs}
+        <form method="get" action="search">
+          {include file="findInclude:common/templates/search.tpl" insideForm=true extraArgs=$hiddenArgs}
         </form>
       </td></tr>
     </table>
   {else}
-    {include file="findInclude:common/templates/search.tpl" placeholder="Search "|cat:$moduleName extraArgs=$hiddenArgs}
+  <div id="newsHeader">
+    {include file="findInclude:common/templates/search.tpl" extraArgs=$hiddenArgs}
+  </div>
   {/if}
+{/block}
+
+{block name="stories"}
+<div id="tabletNews" class="splitview">
+<div id="stories" class="listcontainer">
+{include file="findInclude:modules/news/templates/stories.tpl"}
+</div>
+<div id="storyDetailWrapper" class="splitview-detailwrapper">
+<div id="storyDetail">
+</div><!-- storyDetail -->
+</div><!-- storyDetailWrapper -->
+</div><!-- tabletNews -->
 {/block}

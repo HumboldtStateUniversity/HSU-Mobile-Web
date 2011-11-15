@@ -40,11 +40,6 @@ h1.roomfornew {
 	line-height: 1em;
 	color: #ffcece;
 }
-#beta {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
 #footer {
 	text-align: center;
 	clear: both;
@@ -72,4 +67,18 @@ form {
 #download img {
     width: 32px;
     height: 26px;
+}
+.banner-notice {
+  background-color: #fff;
+  border-bottom: solid 1px #ccc;
+  padding: .25em .5em;
+}
+a.banner-notice {
+  display: block;
+  padding: .25em 25px .25em .5em;
+	background-image: url(/common/images/action-arrow.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	line-height: 1.2em;
+	text-decoration: none;
 }

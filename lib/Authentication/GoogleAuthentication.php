@@ -8,13 +8,9 @@
   */
 class GoogleAuthentication extends OAuthAuthentication
 {
+    protected $OAuthProviderClass='GoogleOAuthProvider';
     protected $authorityClass = 'google';
     protected $userClass='GoogleUser';
-    protected $requestTokenURL = 'https://www.google.com/accounts/OAuthGetRequestToken';
-    protected $authorizeTokenURL = 'https://www.google.com/accounts/OAuthAuthorizeToken';
-    protected $accessTokenURL = 'https://www.google.com/accounts/OAuthGetAccessToken';
-    protected $useCache = true;
-    protected $cache;
     
     public function validate(&$error) {
         return true;
@@ -29,24 +25,28 @@ class GoogleAuthentication extends OAuthAuthentication
     }
 
     protected function getUserFromArray(array $array) {
-
-        $url = 'https://www.googleapis.com/userinfo/email';
-    
-        $parameters = array(
-            'alt'=>'json'
-        );
-        
-        if (!$result = $this->oauthRequest('GET', $url, $parameters)) {
-            error_log("Error getting email from $url");
-            return false;
-        }
-
-        $data = json_decode($result, true);
-        if (isset($data['data']['email'])) {
-            return $this->getUser($data['data']['email']);
+        $user = new $this->userClass($this);
+        if ($user->setVars($array)) {
+            $this->cacheUserArray($user->getUserID(), $array);
+            return $user;
         }
         
         return false;
+    }
+
+    protected function cacheUserArray($login, array $array) {
+        $umask = umask(0077);
+        $return = file_put_contents($this->cacheFile($login), serialize($array));
+        umask($umask);
+        return $return;
+    }
+
+    protected function cacheFile($login) {
+        $cacheDir = CACHE_DIR . '/GoogleOpenID' ;
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir, 0700, true);
+        }
+        return $cacheDir . "/" . md5($login);
     }
 
     public function getUser($login) {
@@ -55,54 +55,15 @@ class GoogleAuthentication extends OAuthAuthentication
             return new AnonymousUser();       
         }
         
-        /* right now there is no way to validate a user. We'll be looking into this */
-        $user = new $this->userClass($this);
-        $user->setUserID($login);
-        $user->setEmail($login);
-        $user->setFullname($login);
+        $filename = $this->cacheFile($login) ;
+        $user = false;
+        if (file_exists($filename)) {
+            if ($array = unserialize(file_get_contents($filename))) {
+                $user = $this->getUserFromArray($array);
+            }
+        }
+
         return $user;
-    }
-    
-    protected function getRequestTokenParameters() {
-        $parameters = array(
-            'scope'=>implode(' ', array(
-                'http://www.google.com/calendar/feeds',
-                'http://apps-apis.google.com/a/feeds/',
-                'https://www.googleapis.com/auth/userinfo#email',
-                'http://www.google.com/m8/feeds/'
-            ))
-        );
-        
-        return $parameters;
-
-    }
-
-    protected function getAuthURL(array $params) {
-        $url = $this->authorizeTokenURL;
-        $parameters = array(
-            'oauth_token'=>$this->token
-        );
-
-        if (!$GLOBALS['deviceClassifier']->isComputer()) {
-            $parameters['btmpl'] ='mobile';
-        }
-        
-	    $url .= stripos($url, "?") ? '&' : '?';
-        $url .= http_build_query($parameters);
-        return $url;
-    }
-    
-    public function init($args) {
-        parent::init($args);
-        $args = is_array($args) ? $args : array();
-
-        if (!isset($args['OAUTH_CONSUMER_KEY'], $args['OAUTH_CONSUMER_SECRET'])) {
-            $args['OAUTH_CONSUMER_KEY']='anonymous';
-            $args['OAUTH_CONSUMER_SECRET']='anonymous';
-        }
-        
-        $this->consumer_key = $args['OAUTH_CONSUMER_KEY'];
-        $this->consumer_secret = $args['OAUTH_CONSUMER_SECRET'];
     }
 }
 
@@ -111,4 +72,41 @@ class GoogleAuthentication extends OAuthAuthentication
   */
 class GoogleUser extends OAuthUser
 {
+
+    protected function valueKeyForTypeKey($key) {
+        if (preg_match("/^openid_(.*?)_type_(.*?)$/", $key, $matches)) {
+            return sprintf("openid_%s_value_%s", $matches[1], $matches[2]);
+        }
+        
+        return null;
+    }
+    
+    public function setVars(array $array) {
+    
+        if (!isset($array['openid_identity'])) {
+            return false;
+        }
+        
+        $this->setUserID($array['openid_identity']);
+        
+        if ( ($type_key = array_search('http://schema.openid.net/contact/email', $array)) !== false) {
+            if ( ($value_key = $this->valueKeyForTypeKey($type_key)) && isset($array[$value_key])) {
+                $this->setEmail($array[$value_key]);
+            }
+        }
+
+        if ( ($type_key = array_search('http://axschema.org/namePerson/first', $array)) !== false) {
+            if ( ($value_key = $this->valueKeyForTypeKey($type_key)) && isset($array[$value_key])) {
+                $this->setFirstName($array[$value_key]);
+            }
+        }
+
+        if ( ($type_key = array_search('http://axschema.org/namePerson/last', $array)) !== false) {
+            if ( ($value_key = $this->valueKeyForTypeKey($type_key)) && isset($array[$value_key])) {
+                $this->setLastName($array[$value_key]);
+            }
+        }
+
+        return true;
+    }
 }

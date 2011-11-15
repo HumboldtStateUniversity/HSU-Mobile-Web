@@ -1,5 +1,13 @@
 {include file="findInclude:common/templates/header.tpl"}
 
+{if $searchError}
+  <div class="nonfocal">{$searchError}</div>
+{else}
+
+<div class="peoplebuttons">
+{include file="findInclude:common/templates/bookmark.tpl" name=$cookieName item=$bookmarkItem exdate=$expireDate}  
+</div>
+
 {block name="detailsStart"}
 {/block}
   {foreach $personDetails as $sectionName=>$section}
@@ -36,6 +44,8 @@
   {/foreach}
 {block name="detailsEnd"}
 {/block}
+
+{/if}
 
 {include file="findInclude:common/templates/footer.tpl"}
 

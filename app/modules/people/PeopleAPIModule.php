@@ -1,6 +1,6 @@
 <?php
 
-includePackage('People');
+Kurogo::includePackage('People');
 
 class PeopleAPIModule extends APIModule
 {
@@ -8,6 +8,33 @@ class PeopleAPIModule extends APIModule
     protected $vmin = 1;
     protected $vmax = 1;
     private $fieldConfig;
+    protected $contactGroups = array();
+    
+    protected function getContactGroup($group) {
+        if (!$this->contactGroups) {
+            $this->contactGroups = $this->getAPIConfigData('contacts-groups');
+        }
+        
+        if (isset($this->contactGroups[$group])) {
+            return $this->contactGroups[$group];
+
+        } else {
+            throw new KurogoConfigurationException("Unable to find contact group information for $group");
+        }
+    }
+
+    protected function getContactsForGroup($group) {
+        if (!$this->contactGroups) {
+            $this->contactGroups = $this->getAPIConfigData('contacts-groups');
+        }
+        
+        if (isset($this->contactGroups[$group])) {
+            return $this->getAPIConfigData('contacts-' . $group);
+
+        } else {
+            throw new KurogoConfigurationException("Unable to find contact group information for $group");
+        }
+    }
     
     private function formatPerson($person) {
         $result = array();
@@ -48,7 +75,7 @@ class PeopleAPIModule extends APIModule
                         $result[$section] = array();
                     }
                     $valueArray = array(
-                        'label' => $fieldOptions['label'],
+                        'title' => $fieldOptions['label'],
                         'type' => $fieldOptions['type'],
                         'value' => $value,
                         );
@@ -72,10 +99,9 @@ class PeopleAPIModule extends APIModule
             }
             $controller = PeopleController::factory($feedData['CONTROLLER_CLASS'], $feedData);
             //$controller->setAttributes($this->detailAttributes);
-            $controller->setDebugMode(Kurogo::getSiteVar('DATA_DEBUG'));
             return $controller;
         } else {
-            throw new Exception("Error getting people feed for index $index");
+            throw new KurogoConfigurationException("Error getting people feed for index $index");
         }
     }
 
@@ -87,10 +113,11 @@ class PeopleAPIModule extends APIModule
         switch ($this->command) {
             case 'search':
                 if ($filter = $this->getArg('q')) {
-    
-                    $searchTerms = trim($filter);
-                    $people = $peopleController->search($searchTerms);
                     
+                    $people = $peopleController->search($filter);
+                    if(!$people)
+                    	$people = array();
+                    	
                     $errorCode = $peopleController->getErrorNo();
                     if ($errorCode) {
                         // TODO decide on error title
@@ -100,7 +127,7 @@ class PeopleAPIModule extends APIModule
                         $this->setResponseError($error);
                     }
                     
-                    $response = null;
+                    $response[] = null;
                     if ($people !== false) {
                         $results = array();
                         $resultCount = count($people);
@@ -124,11 +151,37 @@ class PeopleAPIModule extends APIModule
                 }
                 break;
             case 'contacts':
-                $results = $this->getAPIConfigData('contacts');
+                $convertTags = array(
+                    'class' => 'type',
+                    'label' => 'title',
+                    'value' => 'subtitle',
+                    );
+
+                $group = $this->getArg('group');
+                if ($group) {
+                    $results = $this->getContactsForGroup($group);
+                } else {
+                    $results = $this->getAPIConfigData('contacts');
+                }
+
+                foreach ($results as &$aResult) {
+                    if (isset($aResult['group'])) {
+                        $groupData = $this->getContactGroup($aResult['group']);
+                        if (isset($groupData['description'])) {
+                            $aResult['subtitle'] = $groupData['description'];
+                        }
+                    }
+
+                    foreach ($convertTags as $from => $to) {
+                        if (isset($aResult[$from])) {
+                            $aResult[$to] = $aResult[$from];
+                            unset($aResult[$from]);
+                        }
+                    }
+                }
+
                 $response = array(
                     'total'        => count($results),
-                    'returned'     => count($results),
-                    'displayField' => 'title',
                     'results'      => $results,
                     );
 
@@ -136,6 +189,17 @@ class PeopleAPIModule extends APIModule
                 $this->setResponseVersion(1);
 
                 break;
+            case 'group':
+            	$group = $this->getContactGroup($this->getArg('group'));
+            	$response = array(
+                    'total'        => count($group),
+                    'results'      => $group,
+                    );
+
+                $this->setResponse($response);
+                $this->setResponseVersion(1);
+                
+            	break;
             case 'displayfields':
                 //break;
             default:

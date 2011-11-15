@@ -14,7 +14,6 @@ class RSSDataController extends DataController
     protected $items;
     protected $contentFilter;
     protected $cacheFolder = 'RSS';
-    protected $cacheFileSuffix = 'rss';
 
     public function addFilter($var, $value)
     {
@@ -49,15 +48,23 @@ class RSSDataController extends DataController
     protected function clearInternalCache()
     {
         $this->items = null;
-        $this->parser->clearInternalCache();
         parent::clearInternalCache();
+    }
+    
+    public function getTitle() {
+        if (!$this->title) {
+            if ($this->parser) {
+                return $this->parser->getTitle();
+            }
+        }
+        
+        return $this->title;
     }
 
     public function items($start=0,$limit=null)
     {
         if (!$this->items) {
-            $data = $this->getData();
-            $this->items = $this->parseData($data);
+            $this->items = $this->getParsedData();
         }
         
         $items = $this->items;
@@ -66,7 +73,9 @@ class RSSDataController extends DataController
             $_items = $items;
             $items = array();
             foreach ($_items as $id=>$item) {
-                if ( (stripos($item->getTitle(), $this->contentFilter)!==FALSE) || (stripos($item->getDescription(), $this->contentFilter)!==FALSE)) {
+                if ( (stripos($item->getTitle(),       $this->contentFilter)!==FALSE) ||
+                     (stripos($item->getDescription(), $this->contentFilter)!==FALSE) ||
+                     (stripos($item->getContent(),     $this->contentFilter)!==FALSE) ) {
                     $items[$id] = $item;
                 }
             }

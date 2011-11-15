@@ -152,7 +152,8 @@ select {
 	margin: 0 0.2em 0 0;
 }
 
-.submitbutton {
+.combobuttom, .submitbutton {
+	/* Form submit buttons with text label. Duplicate classes to support Kurogo pre-v1.2 */
 	font-size: 100%;
 	line-height: 1em;
 	height: 1.8em;
@@ -165,62 +166,43 @@ html>body .submitbutton {
 	padding: 0.4em 0.3em;
 }
 
+.formlist .formelement {
+  text-align: center;
+  margin-bottom: .5em;
+}
+.formlist .formelement label {
+  text-align: right;
+  margin-right: .5em;
+  display: inline-block;
+  width: 6.5em;
+}
+.formlist .formelement input {
+  width: 9.5em;
+  padding-left: .25em;
+  padding-right: .25em;
+  line-height: 26px;
+}
+.formlist .formelement select {
+  width: 10em;
+  line-height: 26px;
+}
+
 .formbuttons {
 	margin: 16px 0 8px 0;
 	text-align: center;
 }
 
-a.formbutton {
-	text-align: center;
-	display: inline-block;
-	padding-right: 7px;
-	background-image: url(/common/images/button-sd-r.gif);
-	background-repeat: no-repeat;
-	background-position: right;
-	margin: 0 5px;
-	height: 36px;
-	text-decoration: none;
-}
-
-a.formbutton div {
-	display: inline-block;
-	color: #fff;
-	font-weight: bold;
-	font-size: 100%;
-	line-height: 1.67em;
-	text-decoration: none;
-	padding: 5px 5px 5px 12px;
-	background-image: url(/common/images/button-sd-l.gif);
-	background-repeat: no-repeat;
-	background-position: left;
-	text-decoration: none;
-}
-
+a.formbutton div,
 input.formbutton {
-  display: inline-block;
+	display: inline-block;
+  font-size: 100%;
+	background-color: #666;
 	color: #fff;
+	border: none;
+	line-height: 1.2em;
 	font-weight: bold;
-	font-size: 100%;
-	line-height: 1.67em;
 	text-decoration: none;
-	padding: 5px 5px 5px 12px;
-	margin-right: 0;
-  border: none;
-	height: 36px; 
-	background-color: transparent;
-	background-image: url(/common/images/button-sd-l.gif);
-	background-repeat: no-repeat;
-	background-position: center left;
-}
-.formbuttonclose {
-  display: inline-block;
-	background-color: transparent;
-	background-image: url(/common/images/button-sd-r.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	margin: 0;
-	height: 36px;
-	padding-right: 7px;
+	padding: .5em .75em;
 }
 
 .radiobutton {
@@ -380,7 +362,7 @@ a.module img {
 
 .nav li.icon {
   padding: 0 11px;
-  min-height: 54px;
+  min-height: 72px;
 }
 
 .nav li.icon img {
@@ -395,7 +377,11 @@ a.module img {
   position: relative;
   margin: 0 -7px 0 0;
   padding: 11px 4px 11px 57px;
-  line-height: 30px;
+  min-height: 50px;
+}
+
+.nav li.icon a img {
+  top: 11px;
 }
 
 .nav h2, .nav h3 {
@@ -529,28 +515,11 @@ ul.focal li:first-child {
 	padding: 4px 9px 4px 7px;
 }
 
-.announcements {	   
-	padding: 0;	   
-	margin: 4px 10px; 
-	font-weight: normal;
-	background-color: #d8e3f2;
-	border-bottom: none;
-}
-
-.announcements li {	
-	padding: 8px;
-	font-size: 82.353%;
-	line-height: 1.357em;
-	color: #202020;
-}
-
 .sidenav {
 	margin: 12px 8px;
-	color: #a0a09f;
 }
 
 .sidenav a {
-	color: #1a1611;
 	padding: 6px 2px;
 	text-decoration: none;
 }
@@ -910,6 +879,7 @@ h2.icon {
 	margin-top: 2px;
 }
 
+.tabstrip ,
 #tabstrip {
 	list-style-type: none;
 	height: 32px;
@@ -919,6 +889,7 @@ h2.icon {
 	overflow: hidden;
 }
 
+.tabstrip li ,
 #tabstrip li {
 	float: left;
 	margin: 0;
@@ -926,6 +897,7 @@ h2.icon {
 	height: 33px;
 }
 
+.tabstrip a ,
 #tabstrip a {
 	display: block;
 	height: 32px;
@@ -933,9 +905,10 @@ h2.icon {
 	text-decoration: none;
 	color: #fff;
 	background: url(/common/images/tabstrip.jpg) repeat-x;
-	border-right: 1px solid #9fb8d3;
+	border-right: 1px solid #999;
 }	
 
+.tabstrip li.active a ,
 #tabstrip li.active a {
 	background-image: url(/common/images/tabstrip-active.jpg);
 }

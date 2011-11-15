@@ -15,7 +15,13 @@
   {/if}
 {/block}
 
+{block name="footerNavLinks"}
+{/block}
+
 {block name="deviceDetection"}
+{/block}
+
+{block name="loginHTML"}
 {/block}
 
 {block name="belowContent"}
@@ -37,7 +43,7 @@
         {/foreach}
       </div>
     </div>
-    <div id="slideleft" style="display:none"></div>
-    <div id="slideright" style="display:none"></div>
+    <div id="slideleft" style="display:none" onclick="navSliderScrollLeft()"></div>
+    <div id="slideright" style="display:none" onclick="navSliderScrollRight()"></div>
   </div>
 {/block}

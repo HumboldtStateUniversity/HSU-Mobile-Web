@@ -3,13 +3,11 @@
 class DrupalContactsListDataController extends ContactsListDataController
 {
     protected $DEFAULT_PARSER_CLASS = 'DrupalContactsDataParser';
-    protected $cacheFileSuffix = "rss";
     protected $contactsLoaded = FALSE;
 
     protected function loadContacts() {
         if(!$this->contactsLoaded) {
-            $data = $this->getData();
-            $contacts = $this->parseData($data);
+            $contacts = $this->getParsedData();
             $this->primaryContacts = $contacts['primary'];
             $this->secondaryContacts = $contacts['secondary'];
             $this->contactsLoaded = TRUE;
@@ -18,11 +16,11 @@ class DrupalContactsListDataController extends ContactsListDataController
 
     protected function init($args) {
         if (!isset($args['DRUPAL_SERVER_URL'])) {
-            throw new Exception("DRUPAL_SERVER_URL not set");
+            throw new KurogoConfigurationException("DRUPAL_SERVER_URL not set");
         }
 
         if (!isset($args['FEED_VERSION'])) {
-            throw new Exception("FEED_VERSION not set");
+            throw new KurogoConfigurationException("FEED_VERSION not set");
         }
         
         $args['BASE_URL'] = $args['DRUPAL_SERVER_URL'] .

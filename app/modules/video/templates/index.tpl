@@ -16,10 +16,10 @@
   {if count($sections) > 1}
     <div class="header">
       <div id="category-switcher" class="category-mode">
-        <form method="get" action="index.php" id="category-form">
+        <form method="get" action="index" id="category-form">
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="formlabel">Section:</td>
+              <td class="formlabel">{"SECTION_TEXT"|getLocalizedString}</td>
               <td class="inputfield"><div id="video-category-select">{$categorySelect}</div></td>
               <td class="togglefield">
                 {block name="categoryButton"}
@@ -36,10 +36,10 @@
           {/foreach}
         </form>
   
-        <form method="get" action="search.php" id="search-form">
+        <form method="get" action="search" id="search-form">
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="formlabel">Search:</td>
+              <td class="formlabel">{"SEARCH"|getLocalizedString}</td>
               <td class="inputfield">
                 <input class="videoinput search-field" type="text" id="search_terms" 
                 name="filter" value="{$searchTerms|escape}" 
@@ -60,14 +60,17 @@
       </div>
     </div>
   {else}
-    {include file="findInclude:common/templates/search.tpl" placeholder="Search "|cat:$moduleName extraArgs=$hiddenArgs}
+    {include file="findInclude:common/templates/search.tpl" extraArgs=$hiddenArgs}
   {/if}
 {/block}
 
-{if $hasBookmarks}
-{include file="findInclude:common/templates/navlist.tpl" navlistItems=$bookmarkLink secondary=true}
-{/if}
+{block name="bookmarks"}
+  {if $hasBookmarks}
+    {include file="findInclude:common/templates/navlist.tpl" navlistItems=$bookmarkLink secondary=true}
+  {/if}
+{/block}
 
-{include file="findInclude:modules/$moduleID/templates/results.tpl" results=$videos resultsID="videoList" titleTruncate=40}
-
+{block name="videos"}
+  {include file="findInclude:modules/$moduleID/templates/results.tpl" results=$videos resultsID="videoList" titleTruncate=40}
+{/block}
 {include file="findInclude:common/templates/footer.tpl"}

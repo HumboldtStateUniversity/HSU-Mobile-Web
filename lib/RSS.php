@@ -107,7 +107,7 @@ class RSSChannel extends XMLElement
   * @package ExternalData
   * @subpackage RSS
   */
-class RSSItem extends XMLElement
+class RSSItem extends XMLElement implements KurogoObject
 {
     protected $name='item';
     protected $title;
@@ -149,7 +149,11 @@ class RSSItem extends XMLElement
 
     public function getGUID()
     {
-        return $this->guid;
+    	if ($this->guid) {
+			return $this->guid;
+		} elseif ($this->link) {
+			return $this->link;
+		}
     }
 
     public function getPubDate()

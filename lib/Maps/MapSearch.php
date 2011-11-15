@@ -28,19 +28,36 @@ class MapSearch {
     }
 
     // tolerance specified in meters
-    public function searchByProximity($center, $tolerance=1000, $maxItems=0) {
+    public function searchByProximity($center, $tolerance=1000, $maxItems=0, $dataController=null) {
         $this->searchResults = array();
 
         $resultsByDistance = array();
-        foreach ($this->feeds as $categoryID => $feedData) {
-            $controller = MapDataController::factory($feedData['CONTROLLER_CLASS'], $feedData);
-            $controller->setCategory($categoryID);
-            $controller->setDebugMode(Kurogo::getSiteVar('DATA_DEBUG'));
-            if ($controller->canSearch()) { // respect config settings
+        $controllers = array();
+        if ($dataController !== null) {
+            $controllers[] = $dataController;
+        } else {
+            foreach ($this->feeds as $categoryID => $feedData) {
+                $controller = MapDataController::factory($feedData['CONTROLLER_CLASS'], $feedData);
+                if ($controller->canSearch()) { // respect config settings
+                    $controllers[] = $controller;
+                }
+            }
+        }
+
+        foreach ($controllers as $controller) {
+            try {
                 $results = $controller->searchByProximity($center, $tolerance, $maxItems);
-                // this runs a risk of eliminating search results that are the
-                // same distance away (within 1 meter) in different feeds
-                $resultsByDistance = array_merge($resultsByDistance, $results);
+                // merge arrays manually since keys are numeric
+                foreach($results as $distance => $mapFeature) {
+                    // avoid distance collisions
+                    while(isset($resultsByDistance[$distance])) {
+                        $distance++;
+                    }
+                    $resultsByDistance[$distance] = $mapFeature;
+                }
+
+            } catch (KurogoDataServerException $e) {
+                Kurogo::log(LOG_WARNING, 'encountered KurogoDataServerException for feed config: ' . print_r($feedData, true) . $e->getMessage(), 'maps');
             }
         }
 
@@ -59,13 +76,15 @@ class MapSearch {
     
     	foreach ($this->feeds as $id => $feedData) {
             $controller = MapDataController::factory($feedData['CONTROLLER_CLASS'], $feedData);
-            $controller->setCategory($id);
-            $controller->setDebugMode(Kurogo::getSiteVar('DATA_DEBUG'));
             
             if ($controller->canSearch()) {
-                $results = $controller->search($query);
-                $this->resultCount += count($results);
-                $this->searchResults = array_merge($this->searchResults, $results);
+                try {
+                    $results = $controller->search($query);
+                    $this->resultCount += count($results);
+                    $this->searchResults = array_merge($this->searchResults, $results);
+                } catch (KurogoDataServerException $e) {
+                    Kurogo::log(LOG_WARNING,'encountered KurogoDataServerException for feed config: ' . print_r($feedData, true) .  $e->getMessage(), 'maps');
+                }
             }
     	}
     	

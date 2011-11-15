@@ -147,7 +147,7 @@ class FacebookAuthentication extends AuthenticationAuthority
         } else {
             
             //find out which "display" to use based on the device
-            $deviceClassifier = $GLOBALS['deviceClassifier'];
+            $deviceClassifier = Kurogo::deviceClassifier();
             $display = 'page';
             switch ($deviceClassifier->getPagetype())
             {
@@ -212,7 +212,7 @@ class FacebookAuthentication extends AuthenticationAuthority
         $args = is_array($args) ? $args : array();
         if (!isset($args['FACEBOOK_API_KEY'], $args['FACEBOOK_API_SECRET']) ||
             strlen($args['FACEBOOK_API_KEY'])==0 || strlen($args['FACEBOOK_API_SECRET'])==0) {
-            throw new Exception("API key and secret not set");
+            throw new KurogoConfigurationException("API key and secret not set");
         }
 
         $this->api_key = $args['FACEBOOK_API_KEY'];

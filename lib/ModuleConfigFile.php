@@ -10,7 +10,7 @@
 class ModuleConfigFile extends ConfigFile {
 
     // loads a config object from a file/type combination  
-    public static function factory($id, $type, $options=0) {
+    public static function factory($id, $type='file', $options=0) {
         $config = new ModuleConfigFile();
         if (!($options & self::OPTION_DO_NOT_CREATE)) {
             $options = $options | self::OPTION_CREATE_WITH_DEFAULT;
@@ -20,12 +20,16 @@ class ModuleConfigFile extends ConfigFile {
             if ($options & self::OPTION_DO_NOT_CREATE) {
                 return false;
             }
-            throw new Exception("FATAL ERROR: cannot load $type configuration file for module $id: " . self::getfileByType($id, $type));
+            throw new KurogoConfigurationException("FATAL ERROR: cannot load $type configuration file for module $id: " . self::getfileByType($id, $type));
         }
-    
+        
         return $config;
     }
   
+    protected function cacheKey() {
+        return "config-module-{$this->file}-{$this->type}";
+    }
+    
     protected function getFileByType($id, $type)
     {
         if (preg_match("/-default$/", $type)) {
@@ -41,7 +45,7 @@ class ModuleConfigFile extends ConfigFile {
                 }
             }
             
-            throw new Exception("Unable to find $type config file for module $id");
+            throw new KurogoConfigurationException("Unable to find $type config file for module $id");
         } else {
             $file = sprintf('%s/%s/%s.ini', SITE_CONFIG_DIR, $id, $type);
         }

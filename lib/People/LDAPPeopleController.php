@@ -51,21 +51,11 @@ class LDAPPeopleController extends PeopleController {
                 ldap_set_option($this->ldapResource, LDAP_OPT_PROTOCOL_VERSION, 3);
                 ldap_set_option($this->ldapResource, LDAP_OPT_REFERRALS, 0);
             } else {
-                error_log("Error connecting to LDAP Server $this->host using port $this->port");
+                Kurogo::log(LOG_WARNING, "Error connecting to LDAP Server $this->host using port $this->port", 'data');
             }
         }
 
         return $this->ldapResource;
-    }
-
-    public function setAttributes($attribs) {
-        if (is_array($attribs)) {
-            $this->attributes =$attribs;
-        } elseif ($attribs) {
-            throw new Exception('Invalid attributes');
-        } else {
-            $this->attributes = array();
-        }
     }
 
     public function search($searchString) {
@@ -82,8 +72,8 @@ class LDAPPeopleController extends PeopleController {
     }
 
     protected function nameFilter($firstName, $lastName) {
-        $givenNameFilter = new LDAPFilter($this->getField('givenname'), $firstName, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
-        $snFilter = new LDAPFilter($this->getField('sn'), $lastName, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
+        $givenNameFilter = new LDAPFilter($this->getField('firstname'), $firstName, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
+        $snFilter = new LDAPFilter($this->getField('lastname'), $lastName, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
         $filter = new LDAPCompoundFilter(LDAPCompoundFilter::JOIN_TYPE_AND, $givenNameFilter, $snFilter);
         return $filter;
     }
@@ -98,11 +88,13 @@ class LDAPPeopleController extends PeopleController {
         if (empty($searchString)) {
             $this->errorMsg = "Query was blank";
         } elseif (Validator::isValidEmail($searchString)) {
-            $filter = new LDAPFilter($this->getField('mail'), $searchString);
+            $filter = new LDAPFilter($this->getField('email'), $searchString);
         } elseif (Validator::isValidPhone($searchString, $phone_bits)) {
             array_shift($phone_bits);
             $searchString = implode("", $phone_bits); // remove any separators. This might be an issue for people with formatted numbers in their directory
             $filter = new LDAPFilter($this->getField('phone'), $searchString);
+        } elseif (preg_match('/^[0-9]+/', $searchString)) { //partial phone number
+            $filter = new LDAPFilter($this->getField('phone'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING);
         } elseif (preg_match('/[A-Za-z]+/', $searchString)) { // assume search by name
 
             $names = preg_split("/\s+/", $searchString);
@@ -111,9 +103,9 @@ class LDAPPeopleController extends PeopleController {
             {
                 case 1:
                     //try first name, last name and email
-                    $snFilter = new LDAPFilter($this->getField('sn'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
-                    $givenNameFilter = new LDAPFilter($this->getField('givenname'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
-                    $mailFilter = new LDAPFilter($this->getField('mail'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
+                    $snFilter = new LDAPFilter($this->getField('lastname'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
+                    $givenNameFilter = new LDAPFilter($this->getField('firstname'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
+                    $mailFilter = new LDAPFilter($this->getField('email'), $searchString, LDAPFilter::FILTER_OPTION_WILDCARD_TRAILING); 
 
                     $filter = new LDAPCompoundFilter(LDAPCompoundFilter::JOIN_TYPE_OR, $givenNameFilter, $snFilter, $mailFilter);
                     break;
@@ -158,14 +150,6 @@ class LDAPPeopleController extends PeopleController {
         return $this->filter;
     }
 
-    public function getErrorNo() {
-        return $this->errorNo;
-    }
-
-    public function getError() {
-        return $this->errorMsg;
-    }
-
     /* return results, or FALSE on error.
     */
     protected function doQuery() {
@@ -182,14 +166,14 @@ class LDAPPeopleController extends PeopleController {
 
         if ($this->adminDN) {
             if (!ldap_bind($ds, $this->adminDN, $this->adminPassword)) {
-                error_log("Error binding to LDAP Server $this->host for $this->adminDN: " . ldap_error($ds));
+                Kurogo::log(LOG_WARNING, "Error binding to LDAP Server $this->host for $this->adminDN: " . ldap_error($ds), 'data');
                 return false;
             }
         }
 
         // suppress warnings on non-dev servers
         // about searches that go over the result limit
-        if (!Kurogo::getSiteVar('DATA_DEBUG')) {
+        if (!$this->debugMode) {
             $error_reporting = ini_get('error_reporting');
             error_reporting($error_reporting & ~E_WARNING);
         }
@@ -201,7 +185,7 @@ class LDAPPeopleController extends PeopleController {
         
         if (!$sr) {
             if($ds) {
-                $this->errorMsg = self::generateErrorMessage($ds);
+                $this->errorMsg = $this->generateErrorMessage($ds);
             }
             return FALSE;
         }
@@ -210,7 +194,7 @@ class LDAPPeopleController extends PeopleController {
             $this->errorMsg = $this->generateErrorMessage($ds);
         }
         
-        if (!Kurogo::getSiteVar('DATA_DEBUG')) {
+        if (!$this->debugMode) {
             error_reporting($error_reporting);
         }
         
@@ -221,10 +205,14 @@ class LDAPPeopleController extends PeopleController {
         }
         
         $results = array();
-        $results[] = new $this->personClass($ds, $entry);
+        $person = new $this->personClass($ds, $entry);
+        $person->setFieldMap($this->fieldMap);
+        $results[] = $person;
 
         while ($entry = ldap_next_entry($ds, $entry)) {
-            $results[] = new $this->personClass($ds, $entry);
+			$person = new $this->personClass($ds, $entry);
+			$person->setFieldMap($this->fieldMap);
+			$results[] = $person;
         }
 
         //sort results by sort fields        
@@ -268,7 +256,7 @@ class LDAPPeopleController extends PeopleController {
 
             if ($this->adminDN) {
                 if (!ldap_bind($ds, $this->adminDN, $this->adminPassword)) {
-                    error_log("Error binding to LDAP Server $this->host for $this->adminDN: " . ldap_error($ds));
+                    Kurogo::log(LOG_WARNING, "Error binding to LDAP Server $this->host for $this->adminDN: " . ldap_error($ds), 'data');
                     return false;
                 }
             }
@@ -277,7 +265,9 @@ class LDAPPeopleController extends PeopleController {
             $sr = ldap_read($ds, $id, "(objectclass=*)", $this->attributes, 0, 0, $this->readTimelimit);
 
             if (!$sr) {
-                $this->errorMsg = ldap_error($ds);
+                if($ds) {
+                    $this->errorMsg = $this->generateErrorMessage($ds);
+                }
                 return FALSE;
             }
 
@@ -286,7 +276,9 @@ class LDAPPeopleController extends PeopleController {
                 return FALSE;
             }
 
-            return new $this->personClass($ds, $entry);
+			$person = new $this->personClass($ds, $entry);
+			$person->setFieldMap($this->fieldMap);
+            return $person;
 
         } else {
 
@@ -308,12 +300,13 @@ class LDAPPeopleController extends PeopleController {
             LDAP_SIZELIMIT_EXCEEDED => "There are more results than can be displayed. Please refine your search.",
             LDAP_PARTIAL_RESULTS => "There are more results than can be displayed. Please refine your search.",
             LDAP_TIMELIMIT_EXCEEDED => "The directory service is not responding. Please try again later.",
+            LDAP_INSUFFICIENT_ACCESS => "Insufficient permission to view this information.",
         );
 
         if(isset($error_codes[$error_code])) {
             return $error_codes[$error_code];
         } else { // return a generic error message
-            return "Your request cannot be processed at this time.";
+            return "Your request cannot be processed at this time. ($error_name)";
         }
     }
 
@@ -330,6 +323,15 @@ class LDAPPeopleController extends PeopleController {
         $this->adminPassword = isset($args['ADMIN_PASSWORD']) ? $args['ADMIN_PASSWORD'] : null;
         $this->searchTimelimit = isset($args['SEARCH_TIMELIMIT']) ? $args['SEARCH_TIMELIMIT'] : 30;
         $this->readTimelimit = isset($args['READ_TIMELIMIT']) ? $args['READ_TIMELIMIT'] : 30;
+
+        $this->fieldMap = array(
+            'userid'=>isset($args['LDAP_USERID_FIELD']) ? $args['LDAP_USERID_FIELD'] : 'uid',
+            'email'=>isset($args['LDAP_EMAIL_FIELD']) ? $args['LDAP_EMAIL_FIELD'] : 'mail',
+            'fullname'=>isset($args['LDAP_FULLNAME_FIELD']) ? $args['LDAP_FULLNAME_FIELD'] : '',
+            'firstname'=>isset($args['LDAP_FIRSTNAME_FIELD']) ? $args['LDAP_FIRSTNAME_FIELD'] : 'givenname',
+            'lastname'=>isset($args['LDAP_LASTNAME_FIELD']) ? $args['LDAP_LASTNAME_FIELD'] : 'sn',
+            'phone'=>isset($args['LDAP_PHONE_FIELD']) ? $args['LDAP_PHONE_FIELD'] : 'telephonenumber'
+        );
         
         if (isset($args['SORTFIELDS']) && is_array($args['SORTFIELDS'])) {
             $this->sortFields = $args['SORTFIELDS'];
@@ -415,7 +417,7 @@ class LDAPCompoundFilter extends LDAPFilter
                 $this->joinType = $joinType;
                 break;
             default:
-                throw new Exception("Invalid join type $joinType");                
+                throw new KurogoConfigurationException("Invalid join type $joinType");                
         }
     
         for ($i=1; $i < func_num_args(); $i++) {
@@ -425,17 +427,17 @@ class LDAPCompoundFilter extends LDAPFilter
             } elseif (is_array($filter)) {
                 foreach ($filter as $_filter) {
                     if (!($_filter instanceOf LDAPFilter)) {
-                        throw new Exception("Invalid filter for in array");
+                        throw new KurogoConfigurationException("Invalid filter for in array");
                     }
                 }
                 $this->filters = $filter;
             } else {
-                throw new Exception("Invalid filter for argument $i");
+                throw new KurogoConfigurationException("Invalid filter for argument $i");
             }
         }
     
         if (count($this->filters)<2) {
-            throw new Exception(sprintf("Only %d filters found (2 minimum)", count($filters)));
+            throw new KurogoConfigurationException(sprintf("Only %d filters found (2 minimum)", count($filters)));
         }
     
     }
@@ -450,9 +452,24 @@ class LDAPCompoundFilter extends LDAPFilter
 class LDAPPerson extends Person {
     
     protected $dn;
+    protected $fieldMap=array();
     
     public function getDn() {
         return $this->dn;
+    }
+
+    public function setFieldMap(array $fieldMap) {
+        $this->fieldMap = $fieldMap;
+    }
+    
+    public function getName() {
+        if ($this->fieldMap['fullname']) {
+            return $this->getFieldSingle($this->fieldMap['fullname']);
+        } else {
+            return sprintf("%s %s", 
+                    $this->getFieldSingle($this->fieldMap['firstname']), 
+                    $this->getFieldSingle($this->fieldMap['lastname']));
+        }
     }
     
     public function getId() {
@@ -480,7 +497,7 @@ class LDAPPerson extends Person {
             $this->attributes[$attrib] = array();
             for ($j=0; $j<$count; $j++) {
                 if (!in_array($ldapEntry[$attribute][$j], $this->attributes[$attrib])) {
-                    $this->attributes[$attrib][] = $ldapEntry[$attribute][$j];
+                    $this->attributes[$attrib][] = str_replace('$', "\n", $ldapEntry[$attribute][$j]);
                 }
             }
         }

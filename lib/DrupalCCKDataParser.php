@@ -52,7 +52,7 @@ abstract class DrupalCCKDataParser extends RSSDataParser
 
     protected static function getValue($xml, $tag) {
         if(!self::hasValue($xml, $tag)) {
-            throw new Exception("$tag is missing");
+            throw new KurogoDataException("$tag is missing");
         }
         return self::getChildNode($xml, $tag)->nodeValue;
     }
@@ -75,11 +75,13 @@ abstract class DrupalCCKDataParser extends RSSDataParser
     }
 
     protected function getContent($descriptionHtml) {
-        $doc = DOMDocument::loadHTML('<html><body>' . $descriptionHtml . '</body></html>');
+        $doc = new DOMDocument();
+        $doc->loadHTML('<html><body>' . $descriptionHtml . '</body></html>');
         $descriptionBody = self::getChildNode($doc->documentElement, 'body');
 
         $fields = array();
-        $body = DOMDocument::loadXML("<body></body>");
+        $body = new DOMDocument();
+        $body->loadXML("<body></body>");
 
         // loop thru each dom node seperate nodes which correspond
         // to extra drupal fields from the main drupal content
@@ -167,7 +169,7 @@ abstract class DrupalCCKDataParser extends RSSDataParser
         if($reflector->hasMethod($methodName)) {
             return $this->$methodName($fieldValueNode);
         } else {
-            throw new Exception("No method found to parse field of type $fieldType");
+            throw new KurogoDataException("No method found to parse field of type $fieldType");
         }
     }
 

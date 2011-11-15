@@ -6,16 +6,16 @@
   {if $refreshPage}
     <meta http-equiv="refresh" content="{$refreshPage}" />
   {/if}
-  <title>{$moduleName}{if !$isModuleHome}: {$pageTitle}{/if}</title>
+  <title>{if !$isModuleHome}{$moduleName}: {/if}{$pageTitle|strip_tags|escape:'htmlall'}</title>
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link href="{$minify['css']}" rel="stylesheet" media="all" type="text/css"/>
+  <link href="{$minify['css']|escape}" rel="stylesheet" media="all" type="text/css"/>
   {foreach $inlineCSSBlocks as $css}
     <style type="text/css" media="screen">
       {$css}
     </style>
   {/foreach}
   {foreach $cssURLs as $cssURL}
-    <link href="{$cssURL}" rel="stylesheet" media="all" type="text/css"/>
+    <link href="{$cssURL|escape}" rel="stylesheet" media="all" type="text/css"/>
   {/foreach}
   
   {block name="javascript"}
@@ -24,14 +24,14 @@
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{$GOOGLE_ANALYTICS_ID}']);
+        {if $GOOGLE_ANALYTICS_DOMAIN}
+        _gaq.push(['_setDomainName', '{$GOOGLE_ANALYTICS_DOMAIN}']);
+        {/if}
         _gaq.push(['_trackPageview']);
-        
-        (function() {ldelim}
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        {rdelim})();
       </script>
+    {/if}
+    {if strlen($PERCENT_MOBILE_ID)}
+        <script src="{$PERCENT_MOBILE_URL}" type="text/javascript" charset="utf-8"></script>
     {/if}
     
     {foreach $inlineJavascriptBlocks as $inlineJavascriptBlock}
@@ -39,23 +39,45 @@
     {/foreach}
     
     {foreach $javascriptURLs as $url}
-      <script src="{$url}" type="text/javascript"></script>
+      <script src="{$url|escape}" type="text/javascript"></script>
     {/foreach}
     
-    <script src="{$minify['js']}" type="text/javascript"></script>
+    <script src="{$minify['js']|escape}" type="text/javascript"></script>
 
-    {if count($onOrientationChangeBlocks)}
-      <script type="text/javascript">
-        function onOrientationChange() {ldelim}
+    <script type="text/javascript">
+      function onOrientationChange() {ldelim}
+        {* the galaxy tab sends orientation change events constantly *}
+        if (typeof onOrientationChange.lastOrientation == 'undefined') {ldelim}
+          onOrientationChange.lastOrientation = null;
+        {rdelim}
+        var newOrientation = getOrientation();
+        if (newOrientation != onOrientationChange.lastOrientation) {ldelim}
+          rotateScreen();
           {foreach $onOrientationChangeBlocks as $script}
             {$script}
           {/foreach}
         {rdelim}
+        onOrientationChange.lastOrientation = newOrientation;
+      {rdelim}
+      if (window.addEventListener) {ldelim}
         window.addEventListener("orientationchange", onOrientationChange, false);
-        window.addEventListener("resize", onOrientationChange, false);
-      </script>
-    {/if}
-
+      {rdelim} else if (window.attachEvent) {ldelim}
+        window.attachEvent("onorientationchange", onOrientationChange);
+      {rdelim}
+      {if count($onOrientationChangeBlocks)}
+        function onResize() {ldelim}
+          {foreach $onOrientationChangeBlocks as $script}
+            {$script}
+          {/foreach}
+        {rdelim}
+        if (window.addEventListener) {ldelim}
+          window.addEventListener("resize", onResize, false);
+        {rdelim} else if (window.attachEvent) {ldelim}
+          window.attachEvent("onresize", onResize);
+        {rdelim}
+      {/if}
+    </script>
+    
     {if count($onLoadBlocks)}
       <script type="text/javascript">
         function onLoad() {ldelim}
@@ -75,7 +97,10 @@
     <meta name="viewport" id="viewport" 
       content="width=device-width, {if $scalable|default:true}user-scalable=yes{else}user-scalable=no, initial-scale=1.0, maximum-scale=1.0{/if}" />
   {/block}
-  <link rel="apple-touch-icon" href="/common/images/icon-{$configModule}.png" />
+  {block name="homeScreenIcon"}
+  <link rel="apple-touch-icon" href="{$smarty.const.FULL_URL_BASE|nosecure}common/images/icon.png" />
+  <link rel="apple-touch-icon-precomposed" href="{$smarty.const.FULL_URL_BASE|nosecure}common/images/icon.png" />
+  {/block}
   {block name="additionalHeadTags"}{/block}
 </head>
 
@@ -103,13 +128,15 @@
           {/if}
           
         {/if}
-        <a href="{$breadcrumb['url']}" {if isset($crumbClass)}class="{$crumbClass}{/if}">
-          {if $breadcrumb@first}
-            <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="28" height="28" alt="" />
-          {else}
-            <span>{$breadcrumb['title']}</span>
-          {/if}
-        </a>
+        {if $moduleID != 'home' || !$breadcrumb@first}
+          <a href="{$breadcrumb['url']|sanitize_url}" {if isset($crumbClass)}class="{$crumbClass}{/if}">
+            {if $breadcrumb@first}
+              <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" />
+            {else}
+              <span>{$breadcrumb['title']|sanitize_html:'inline'}</span>
+            {/if}
+          </a>
+        {/if}
       {/foreach}
     {/if}
   {/block}
@@ -118,32 +145,32 @@
 <body class="{$configModule|capitalize}Module" 
   {block name="onLoad"}
     {if count($onLoadBlocks) || count($onOrientationChangeBlocks)}
-      onload="{if count($onLoadBlocks)}onLoad();{/if}{if count($onOrientationChangeBlocks)}onOrientationChange();{/if}"
+      onload="{if count($onLoadBlocks)}onLoad();{/if}onOrientationChange();"
     {/if}
   {/block}>
   <div id="nonfooternav">
-    <a name="top"></a>
+    <a name="top"> </a>
     {if isset($customHeader)}
       {$customHeader|default:''}
     {else}
       {block name="navbar"}
         <div id="navbar"{if $hasHelp} class="helpon"{/if}>
           <div class="breadcrumbs{if $isModuleHome} homepage{/if}">
-            <a name="top" href="/home/" class="homelink">
-              <img src="/common/images/homelink.png" width="57" height="45" alt="Home" />
+            <a href="{$homeLink}" class="homelink" title="{$homeLinkText}">
+              <img src="/common/images/homelink.png" width="{$homelink_image_width|default:57}" height="{$homelink_image_height|default:45}" alt="{$homeLinkText}" />
             </a>
             
             {$breadcrumbHTML}
             <span class="pagetitle">
               {if $isModuleHome}
-                <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="28" height="28" alt="" class="moduleicon" />
+                <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" class="moduleicon" />
               {/if}
-              {$pageTitle}
+              {$pageTitle|sanitize_html:'inline'}
             </span>
           </div>
           {if $hasHelp}
             <div class="help">
-              <a href="help.php"><img src="/common/images/help.png" width="46" height="45" alt="Help" /></a>
+              <a href="{$helpLink}" title="{$helpLinkText}"><img src="/common/images/help.png" width="{$help_image_width|default:46}" height="{$help_image_height|default:45}" alt="{$helpLinkText}" /></a>
             </div>
           {/if}
         </div>

@@ -11,6 +11,12 @@ abstract class AuthenticationAuthority
 {
     
     /** 
+      * The arguments used to initialize this authority
+      * @var array
+      */
+    protected $initArgs = array();
+
+    /** 
       * The tag used to identify this authority 
       * @var string
       */
@@ -57,6 +63,12 @@ abstract class AuthenticationAuthority
       * @var bool
       */
     protected $debugMode = false;
+    
+    /**
+      * Save user credentials. Needed for web services that require username/password. Only works with direct authorities
+      * @var $bool
+      */
+    protected $saveCredentials = false;
     
     /**
      * Attempts to authenticate the user using the included credentials
@@ -109,25 +121,35 @@ abstract class AuthenticationAuthority
     public function init($args)
     {
         $args = is_array($args) ? $args : array();
+        $this->initArgs = $args;
+        if (isset($args['DEBUG_MODE'])) {
+            $this->setDebugMode($args['DEBUG_MODE']);
+        } else {
+            $this->setDebugMode(Kurogo::getSiteVar('DATA_DEBUG'));
+        }
+                
         if (!isset($args['TITLE']) || empty($args['TITLE'])) {
-            throw new Exception("Invalid authority title");
+            throw new KurogoConfigurationException("Invalid authority title");
         }
         
         if (!isset($args['INDEX']) || empty($args['INDEX'])) {
-            throw new Exception("Invalid authority index");
+            throw new KurogoConfigurationException("Invalid authority index");
         }
         
         $this->setAuthorityIndex($args['INDEX']);
         $this->setAuthorityTitle($args['TITLE']);
 
         if (!isset($args['USER_LOGIN'])) {
-            throw new Exception("USER_LOGIN value not set for " . $this->AuthorityTitle);
+            throw new KurogoConfigurationException("USER_LOGIN value not set for " . $this->AuthorityTitle);
         }
 
         if (!$this->setUserLogin($args['USER_LOGIN'])) {
-            throw new Exception("Invalid USER_LOGIN setting for " . $this->AuthorityTitle);
+            throw new KurogoConfigurationException("Invalid USER_LOGIN setting for " . $this->AuthorityTitle);
         }
         
+        if (isset($args['SAVE_CREDENTIALS'])) {
+            $this->setSaveCredentials($args['SAVE_CREDENTIALS']);
+        }
         
         if (isset($args['LOGGEDIN_IMAGE_URL']) && strlen($args['LOGGEDIN_IMAGE_URL'])) {
             $this->setAuthorityImage($args['LOGGEDIN_IMAGE_URL']);
@@ -157,6 +179,13 @@ abstract class AuthenticationAuthority
         }
         
         return false;
+    }
+    
+    public function setSaveCredentials($bool) {
+        $this->saveCredentials = $bool ? true : false;
+        if ($this->saveCredentials && $this->userLogin != 'FORM') {
+            throw new KruogoConfigurationException("Credentials can only be saved when using USER_LOGIN=FORM");
+        }
     }
 
     /**
@@ -276,13 +305,35 @@ abstract class AuthenticationAuthority
         return key($authorities);
     }
 
-    public static function getAuthenticationAuthorityData($index) {
+    public static function getAuthenticationAuthorityData(&$index) {
+        if (strlen($index)==0) {
+            return false;
+        }
+        
         static $configFile;
         if (!$configFile) {
             $configFile = self::getAuthorityConfigFile();
         }
         
-        return $configFile->getOptionalSection($index);
+        $sections = $configFile->getSectionVars();
+        
+        //check and see if $index is a authority index
+        if (isset($sections[$index])) {
+            return $sections[$index];
+        }
+        
+        // check and see if an authority that is a class or subclass of $index has been defined
+        foreach ($sections as $sectionIndex=>$sectionData) {
+            $className = $sectionData['CONTROLLER_CLASS'];
+            $class = new ReflectionClass($className);
+            if ($className==$index || $class->isSubclassOf($index)) {
+                $index = $sectionIndex;
+                return $sectionData;
+            }
+        }
+        
+        //nothing found
+        return false;
     }
     
     public static function validateAuthority($index, $authorityData) {
@@ -301,15 +352,21 @@ abstract class AuthenticationAuthority
 
     /**
      * Retrieves an authentication authority by its index. This is the preferred way to retrieve an authority
-     * @param string $index the index/tag of the authority to retrieve
+     * @param string $index the index/tag or the Authentication Authority Class to retrieve
      * @return AuthenticationAuthority object initialized based on the values in the authentication config file or false if the index was not found
     */
     public static function getAuthenticationAuthority($index)
     {
+        static $cache;
+        if (isset($cache[$index])) {
+            return $cache[$index];
+        }
+        
         if ($authorityData = self::getAuthenticationAuthorityData($index)) {
             $authorityClass = $authorityData['CONTROLLER_CLASS'];
             $authorityData['INDEX'] = $index;
             $authority = self::factory($authorityClass, $authorityData);
+            $cache[$index] = $authority;
             return $authority;
         }
         
@@ -371,7 +428,7 @@ abstract class AuthenticationAuthority
     public static function factory($authorityClass, $args)
     {
         if (!class_exists($authorityClass) || !is_subclass_of($authorityClass, 'AuthenticationAuthority')) {
-            throw new Exception("Invalid authentication class $authorityClass");
+            throw new KurogoConfigurationException("Invalid authentication class $authorityClass");
         }
         $authority = new $authorityClass;
         $authority->init($args);
@@ -412,6 +469,9 @@ abstract class AuthenticationAuthority
         $result = $this->auth($login, $password, $user);
         
         if ($result == AUTH_OK) {
+            if ($this->saveCredentials) {
+                $user->setCredentials($password);
+            }
             $session->login($user);
         }
         

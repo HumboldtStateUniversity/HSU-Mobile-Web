@@ -3,26 +3,28 @@
 {block name="footerNavLinks"}
   {if $hasHelp}
     <p class="secondary">
-      <a href="help.php">{$moduleName} Help</a>
+      <a href="{$helpLink}">{$helpLinkText}</a>
     </p>
   {/if}
   
-  {if $moduleID != 'home'}
+  {if $moduleID != 'home' || $page != 'index'}
     {html_access_key_reset index=0 force=true}
     <p class="bottomnav">
-      <a href="#top">Back to top</a>
+      <a href="#top">{$footerBackToTop}</a>
       <br />
-      {html_access_key_link href="/home/"}{$strings.SITE_NAME} Home{/html_access_key_link}
+      {html_access_key_link href="{$homeLink}"}{$homeLinkText}{/html_access_key_link}
       {if !$isModuleHome}
         {foreach $breadcrumbs as $breadcrumb}
-          <br/>
-          {html_access_key_link href=$breadcrumb['url']}
-            {if $breadcrumb@first}
-              {$moduleName} Home
-            {else}
-              {$breadcrumb['longTitle']}
-            {/if}
-          {/html_access_key_link}
+          {if $moduleID != 'home' || !$breadcrumb@first}
+            <br/>
+            {html_access_key_link href=$breadcrumb['url']}
+              {if $breadcrumb@first}
+                {$moduleHomeLinkText}
+              {else}
+                {$breadcrumb['longTitle']}
+              {/if}
+            {/html_access_key_link}
+          {/if}
         {/foreach}
       {/if}
       {foreach $additionalLinks as $link}
@@ -37,15 +39,7 @@
   {block name="loginHTML"}
     {if $session && $moduleID == 'home'}
 	<div class="loginstatus">
-        {if $session_isLoggedIn}
-        {if $session_multiple_logins}
-			<p><a href="{$session_logout_url}">Signed in with multiple identities</a></p>
-        {else}
-			<p class="{$session_authority_class}"><a href="../login">Signed in via {$session_authority_title} as {$session_fullName}{if $session_multiple_logins} (and other identities){/if}</a></p>
-		{/if}
-		{else}
-			<p class="noauth"><a href="../login">Sign in to {$strings.SITE_NAME}</a></p>
-		{/if}
+		<p{if $footerLoginClass} class="{$footerLoginClass}"{/if}><a href="{$footerLoginLink}">{$footerLoginText}</a></p>
 	</div>
 	{/if}
   {/block}
@@ -76,4 +70,8 @@
   {if strlen($gaImageURL)}
     <img src="{$gaImageURL}" />
   {/if}
+  {if strlen($pmImageURL)}
+    <img src="{$pmImageURL}" width="2" height="2" alt="" />
+  {/if}
+
 {/block}

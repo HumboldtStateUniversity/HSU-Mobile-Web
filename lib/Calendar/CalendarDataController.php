@@ -17,7 +17,6 @@ class CalendarDataController extends DataController
     const START_TIME_LIMIT=-2147483647; 
     const END_TIME_LIMIT=2147483647; 
     protected $cacheFolder = 'Calendar';
-    protected $cacheFileSuffix = 'ics';
     protected $startDate;
     protected $endDate;
     protected $calendar;
@@ -48,7 +47,13 @@ class CalendarDataController extends DataController
     
     public function setStartDate(DateTime $time)
     {
+        $clearCache = $this->startDate && $time->format('U') < $this->startTimestamp();
+        
         $this->startDate = $time;
+        
+        if ($clearCache) {
+          $this->clearInternalCache();
+        }
     }
     
     public function startTimestamp()
@@ -58,7 +63,13 @@ class CalendarDataController extends DataController
 
     public function setEndDate(DateTime $time)
     {
+        $clearCache = $this->endDate && $time->format('U') > $this->endTimestamp();
+        
         $this->endDate = $time;
+        
+        if ($clearCache) {
+          $this->clearInternalCache();
+        }
     }
 
     public function endTimestamp()
@@ -76,7 +87,7 @@ class CalendarDataController extends DataController
         if (!$this->startDate) {
             return;
         } elseif (!preg_match("/^-?(\d+)$/", $duration)) {
-            throw new Exception("Invalid duration $duration");
+            throw new KurogoDataException("Invalid duration $duration");
         }
         
         $this->endDate = clone($this->startDate);
@@ -86,9 +97,10 @@ class CalendarDataController extends DataController
             case 'day':
             case 'month':
                 $this->endDate->modify(sprintf("%s%s %s", $duration>=0 ? '+' : '', $duration, $duration_units));
+                $this->clearInternalCache();
                 break;
             default:
-                throw new Exception("Invalid duration unit $duration_units");
+                throw new KurogoDataException("Invalid duration unit $duration_units");
                 break;
             
         }
@@ -117,7 +129,7 @@ class CalendarDataController extends DataController
     public function getItem($id, $time=null)
     {
         //use the time to limit the range of events to seek (necessary for recurring events)
-        if ($time) {
+        if ($time = filter_var($time, FILTER_VALIDATE_INT)) {
             $start = new DateTime(date('Y-m-d H:i:s', $time));
             $start->setTime(0,0,0);
             $end = clone $start;
@@ -127,19 +139,18 @@ class CalendarDataController extends DataController
         }
         
         $items = $this->events();
-        if (array_key_exists($id, $items)) {
-            if (array_key_exists($time, $items[$id])) {
-                return $items[$id][$time];
-            }
-        }
+		foreach($items as $key => $item) {
+			if($id == $item->get_uid()) {
+				return $item;
+			}
+		}
         
         return false;
     }
     
     public function getEvent($id) {
         if (!$this->calendar) {
-            $data = $this->getData();
-            $this->calendar = $this->parseData($data);
+            $this->calendar = $this->getParsedData();
         }
         
         return $this->calendar->getEvent($id);
@@ -148,8 +159,7 @@ class CalendarDataController extends DataController
     protected function events($limit=null)
     {
         if (!$this->calendar) {
-            $data = $this->getData();
-            $this->calendar = $this->parseData($data);
+            $this->calendar = $this->getParsedData();
         }
 
         $startTimestamp = $this->startTimestamp() ? $this->startTimestamp() : CalendarDataController::START_TIME_LIMIT;
@@ -169,18 +179,15 @@ class CalendarDataController extends DataController
     {
         $items = $this->events($limit);
         $events = array();
-        foreach ($items as $eventOccurrences) {
-            foreach ($eventOccurrences as $occurrence) {
-                if ($this->contentFilter) {
-                    if ( (stripos($occurrence->get_description(), $this->contentFilter)!==FALSE) || (stripos($occurrence->get_summary(), $this->contentFilter)!==FALSE)) {
-                        $events[] = $occurrence;
-                    }
-                } else {
-                    $events[] = $occurrence;
-                }
-            }
-        }
-
+		foreach ($items as $occurrence) {
+			if ($this->contentFilter) {
+				if ( (stripos($occurrence->get_description(), $this->contentFilter)!==FALSE) || (stripos($occurrence->get_summary(), $this->contentFilter)!==FALSE)) {
+					$events[] = $occurrence;
+				}
+			} else {
+				$events[] = $occurrence;
+			}
+		}
         return $this->limitItems($events, $start, $limit);
     }
 }

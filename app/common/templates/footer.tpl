@@ -14,30 +14,24 @@
     {if $strings.COPYRIGHT_LINK}
       </a>
     {/if}
+   <br />
+   {block name="footerKurogo"}{$footerKurogo}{/block}
   {/capture}
 
   
   {block name="footerNavLinks"}
-    {if $moduleID != 'home'}
+    {if !$hideFooterLinks}
       <div id="footerlinks">
-        <a href="#top">Back to top</a> | <a href="../home/">{$strings.SITE_NAME} home</a>
+        <a href="#top">{$footerBackToTop}</a> | <a href="{$homeLink}">{$homeLinkText}</a>
       </div>
     {/if}
   {/block}
 
   {block name="loginHTML"}
-    {if $session && $moduleID == 'home'}
+    {if $showLogin}
 	<div class="loginstatus">
 		<ul class="nav secondary loginbuttons">
-        {if $session_isLoggedIn}
-        {if $session_multiple_logins}
-			<li><a href="{$session_logout_url}">Signed in with multiple identities</a></li>
-        {else}
-			<li class="{$session_authority_class}"><a href="../login">Signed in via {$session_authority_title} as {$session_fullName}{if $session_multiple_logins} (and other identities){/if}</a></li>
-		{/if}
-		{else}
-			<li class="noauth"><a href="../login">Sign in to {$strings.SITE_NAME}</a></li>
-		{/if}
+		<li{if $footerLoginClass} class="{$footerLoginClass}"{/if}><a href="{$footerLoginLink}">{$footerLoginText}</a></li>
 		</ul>
 	</div>
 	{/if}
@@ -66,6 +60,23 @@
         {$script} 
       </script>
     {/foreach}
+    
+    {if strlen($GOOGLE_ANALYTICS_ID)}
+      <script type="text/javascript">
+        (function() {ldelim}
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        {rdelim})();
+      </script>
+    {/if}
+    {if strlen($PERCENT_MOBILE_ID)}
+        <script>
+           <!--
+            percent_mobile_track('{$PERCENT_MOBILE_ID}', '{$pageTitle}');
+            -->
+        </script>
+    {/if}
   {/block}
 {block name="containerEnd"}
 </div>

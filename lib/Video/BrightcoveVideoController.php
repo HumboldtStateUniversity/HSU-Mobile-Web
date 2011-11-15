@@ -3,7 +3,6 @@
  class BrightCoveVideoController extends VideoDataController
  {
     protected $DEFAULT_PARSER_CLASS='BrightCoveDataParser';
-    protected $cacheFileSuffix='json';
     protected $token;
     protected $playerKey;
     protected $playerId;
@@ -36,17 +35,17 @@
     protected function init($args) {
         parent::init($args);
         if (!isset($args['token'])) {
-            throw new Exception('Brightcove token not included');
+            throw new KurogoConfigurationException('Brightcove token not included');
         }
         $this->token = $args['token'];
 
         if (!isset($args['playerKey'])) {
-            throw new Exception('Brightcove playerKey not included');
+            throw new KurogoConfigurationException('Brightcove playerKey not included');
         }
         $this->playerKey = $args['playerKey'];
 
         if (!isset($args['playerId'])) {
-            throw new Exception('Brightcove playerId not included');
+            throw new KurogoConfigurationException('Brightcove playerId not included');
         }
         $this->playerId = $args['playerId'];
 

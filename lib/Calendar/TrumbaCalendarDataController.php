@@ -13,6 +13,7 @@ class TrumbaCalendarDataController extends CalendarDataController
     const DEFAULT_EVENT_CLASS='TrumbaEvent';
     protected $trumbaFilters=array();
     protected $supportsSearch = true;
+    protected $categoryFilter = '';
     
     public function addTrumbaFilter($var, $value)
     {
@@ -27,7 +28,9 @@ class TrumbaCalendarDataController extends CalendarDataController
         switch ($var)
         {
             case 'category':
-                $this->addTrumbaFilter(Kurogo::getSiteVar('CALENDAR_CATEGORY_FILTER_FIELD'), $value);
+                if ($this->categoryFilter) {
+                    $this->addTrumbaFilter($this->categoryFilter, $value);
+                }
                 break;
             default:
                 return parent::addFilter($var, $value);
@@ -36,7 +39,7 @@ class TrumbaCalendarDataController extends CalendarDataController
     public function url()
     {
         if (empty($this->startDate) || empty($this->endDate)) {
-            throw new Exception('Start or end date cannot be blank');
+            throw new KurogoConfigurationException('Start or end date cannot be blank');
         }
         
         $diff = $this->endTimestamp() - $this->startTimestamp();
@@ -56,7 +59,7 @@ class TrumbaCalendarDataController extends CalendarDataController
             $this->addFilter('startdate', $this->startDate->format('Ymd'));
             $this->addFilter('days', $diff / 86400);
         } else {
-            trigger_error("Non day integral duration specified $diff", E_USER_ERROR);
+            Kurogo::log(LOG_WARNING, "Non day integral duration specified $diff", 'calendar');
         }
         
         return parent::url();
@@ -74,16 +77,23 @@ class TrumbaCalendarDataController extends CalendarDataController
             $this->setEndDate($end);
             
             $items = $this->events();
-            if (array_key_exists($id, $items)) {
-                if (array_key_exists($time, $items[$id])) {
-                    return $items[$id][$time];
+            foreach ($items as $key => $item) {
+                if ($id == $item->get_uid()) {
+                    return $item;
                 }
             }
         }
     
-        throw new Exception("Can't load event without a time");
+        throw new KurogoConfigurationException("Can't load event without a time");
     }
     
+    protected function init($args)
+    {
+        parent::init($args);
+        if (isset($args['CATEGORY_FILTER_FIELD'])) {
+          $this->categoryFilter = $args['CATEGORY_FILTER_FIELD'];
+        }
+    }
 }
 
 /**

@@ -3,7 +3,6 @@
  class VimeoVideoController extends VideoDataController
  {
     protected $DEFAULT_PARSER_CLASS='VimeoDataParser';
-    protected $cacheFileSuffix='json';
     protected $channel;
     
     protected function init($args) {
@@ -39,7 +38,7 @@
         } elseif ($this->channel) {
             $url .= 'channel/' . $this->channel;
         } else {
-            throw new Exception("Unable to determine type of request");
+            throw new KurogoConfigurationException("Unable to determine type of request");
         }
         
         $url .= "/videos.json";
@@ -53,9 +52,16 @@
         return $items;
     }
         
+    protected function isValidID($id) {
+        return preg_match("/^[0-9]+$/", $id);
+    }
     
 	 // retrieves video based on its id
 	public function getItem($id) {
+	    if (!$this->isValidID($id)) {
+	        return false;
+	    }
+
         $url = 'http://vimeo.com/api/v2/video/' . $id . '.json';
         $this->setBaseURL($url);
         if ($items = $this->getParsedData()) {
@@ -97,7 +103,6 @@ class VimeoDataParser extends DataParser
             $videos = array();
             if (is_array($data)) {
                 if (isset($data['id'])) {
-                    Debug::die_here($data);
                 } else {
                     $this->setTotalItems(count($data));
                     foreach ($data as $entry) {
@@ -117,4 +122,12 @@ class VimeoDataParser extends DataParser
 class VimeoVideoObject extends VideoObject
 {
     protected $type = 'vimeo';
+
+    public function canPlay(DeviceClassifier $deviceClassifier) {
+        if (in_array($deviceClassifier->getPlatform(), array('blackberry','bbplus'))) {
+            return false;
+        }
+
+        return true;
+    }
 }

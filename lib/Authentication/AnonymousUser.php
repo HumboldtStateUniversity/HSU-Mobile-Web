@@ -6,6 +6,10 @@
  */
 class AnonymousUser extends User
 {
+    public function __toString() {
+        return 'anonymous';
+    }
+
     public function __construct()
     {
     }
@@ -18,7 +22,7 @@ class AnonymousUser extends User
         return false;
     }
 
-    public function getUserData($key) {
+    public function getUserData($key=null) {
         return null;
     }
  

@@ -4,7 +4,7 @@
 }
 #navbar .moduleicon {
   padding-top: 5px;
-  padding-left: 5px;
+  padding-left: 7px;
 }
 #navbar .pagetitle {
   height: 50px;
@@ -96,7 +96,7 @@ form {
   margin: 1px;
   padding: 0;
   padding-left: 52px;
-  background: transparent url(/modules/home/images/pane-header-bg.png) repeat-x top left;
+  background: transparent url(/modules/home/images/pane-header-bg.png) repeat-x left top;
   color: white;
   font-size: 120%;
   text-align: left;
@@ -117,7 +117,7 @@ form {
   height: 36px;
   margin-top: -18px;
   background-color: transparent;
-  background-position: top left;
+  background-position: left top;
   background-repeat: none;
   background-size: 36px;
   -o-background-size: 36px;
@@ -126,30 +126,33 @@ form {
   -webkit-background-size: 36px;
 }
 .video .blockheader .icon {
-  background-image: url(/common/images/pane-video.png);
+  background-image: url(/common/images/title-video.png);
 }
 
 .emergency .blockheader .icon {
-  background-image: url(/common/images/pane-emergency.png);
+  background-image: url(/common/images/title-emergency.png);
 }
 
 .news .blockheader .icon {
-  background-image: url(/common/images/pane-news.png);
+  background-image: url(/common/images/title-news.png);
 }
 .about .blockheader .icon {
-  background-image: url(/common/images/pane-about.png);
+  background-image: url(/common/images/title-about.png);
 }
 .calendar .blockheader .icon {
-  background-image: url(/common/images/pane-calendar.png);
+  background-image: url(/common/images/title-calendar.png);
 }
 .courses .blockheader .icon {
-  background-image: url(/common/images/pane-courses.png);
+  background-image: url(/common/images/title-courses.png);
 }
 .transit .blockheader .icon {
-  background-image: url(/common/images/pane-transit.png);
+  background-image: url(/common/images/title-transit.png);
 }
 .dining .blockheader .icon {
-  background-image: url(/common/images/pane-dining.png);
+  background-image: url(/common/images/title-dining.png);
+}
+.people .blockheader .icon {
+  background-image: url(/common/images/title-people.png);
 }
 .blockheader .nextlink {
   position: absolute;
@@ -158,7 +161,7 @@ form {
   width: 18px;
   height: 18px;
   margin-top: -9px;
-  background: transparent url(/common/images/action-module.png) no-repeat top left;
+  background: transparent url(/common/images/action-module.png) no-repeat left top;
 }
 
 .blockcontent {

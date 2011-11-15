@@ -4,9 +4,9 @@
   <select class="newsinput" id="section" name="section" onchange="loadSection(this);">
     {foreach $sections as $section}
       {if $section['selected']}
-        <option value="{$section['value']}" selected="true">{$section['title']}</option>
+        <option value="{$section['value']}" selected="true">{$section['title']|escape}</option>
       {else}
-        <option value="{$section['value']}">{$section['title']}</option>
+        <option value="{$section['value']}">{$section['title']|escape}</option>
       {/if}
     {/foreach}
   </select>
@@ -17,10 +17,10 @@
   {if count($sections) > 1}
     <div class="header">
       <div id="category-switcher" class="category-mode">
-        <form method="get" action="index.php" id="category-form">
+        <form method="get" action="index" id="category-form">
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="formlabel">Section:</td>
+              <td class="formlabel">{"SECTION_TEXT"|getLocalizedString}</td>
               <td class="inputfield"><div id="news-category-select">{$categorySelect}</div></td>
               <td class="togglefield">
                 {block name="categoryButton"}
@@ -37,10 +37,10 @@
           {/foreach}
         </form>
   
-        <form method="get" action="search.php" id="search-form">
+        <form method="get" action="search" id="search-form">
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="formlabel">Search:</td>
+              <td class="formlabel">{"SEARCH"|getLocalizedString}</td>
               <td class="inputfield">
                 <input class="newsinput search-field" type="text" id="search_terms" 
                 name="filter" value="{$searchTerms|escape}" 
@@ -61,11 +61,12 @@
       </div>
     </div>
   {else}
-    {include file="findInclude:common/templates/search.tpl" placeholder="Search "|cat:$moduleName extraArgs=$hiddenArgs}
+    {include file="findInclude:common/templates/search.tpl" extraArgs=$hiddenArgs}
   {/if}
 {/block}
-
+{block name="stories"}
 {include file="findInclude:modules/news/templates/stories.tpl"}
+{/block}
 
 {block name="newsFooter"}
   {include file="findInclude:common/templates/footer.tpl"}

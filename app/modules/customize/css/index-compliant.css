@@ -12,7 +12,11 @@
 ul.iconic li {
   position: relative;
   background-color: #fff;
-  padding-left: 44px;
+}
+
+img.homeicon {
+  vertical-align: middle;
+  margin: -5px 5px 0 0;
 }
 
 ul.iconic li:first-child {
@@ -46,7 +50,6 @@ ul.iconic li:last-child .movedown {
 }
 
 ul.iconic span.nolink { 
-  position: relative;
   padding-left: 37px;
   background-position: 3px 3px;
   font-size: 94.112%;

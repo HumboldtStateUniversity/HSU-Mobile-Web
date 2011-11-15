@@ -20,6 +20,10 @@ abstract class User
     
     protected $attributes=array();
     
+    public function __toString() {
+        return $this->getAuthenticationAuthorityIndex() . ':' . $this->getUserID();
+    }
+    
     public function getUserID()
     {
         return $this->userID;
@@ -152,6 +156,26 @@ abstract class User
         return $this->getUserDataFolder() . "/" . $this->getUserHash();
     }
     
+    public function setCredentials($credentials) {
+        try {
+            $value = Kurogo::encrypt($credentials);
+        } catch (KurogoException $e) {
+            $value = $credentials;
+        }
+    
+        $this->setUserData('KurogoCredentialsCache', $value);
+    }
+    
+    public function getCredentials() {
+        $value = $this->getUserData('KurogoCredentialsCache');
+        try {
+            $credentials = Kurogo::decrypt($value);
+        } catch (KurogoException $e) {
+            $credentials = $value;
+        }
+        return $credentials;
+    }
+    
     public function setUserData($key, $value) {
         if (!is_dir($this->getUserDataFolder())) {
             if (!mkdir($this->getUserDataFolder(), 0700, true)) {
@@ -164,8 +188,14 @@ abstract class User
         }
 
         $userData = $this->getUserData();
+        if (isset($userData[$key]) && $userData[$key]===$value) {
+            //no change
+            return true;
+        }
         $userData[$key] = $value;
+        $umask = umask(0077);
         file_put_contents($this->getUserDataFile(), serialize($userData));
+        umask($umask);
         $this->userData = $userData;
     }
 
