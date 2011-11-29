@@ -1,3 +1,7 @@
+# HSU Mobile Web
+
+The HSU mobile web is based on the Kurogo Mobile Web framework.
+
 # Kurogo Mobile Web
 
 Kurogo is a PHP framework for delivering high quality, data driven customizable content to a wide
