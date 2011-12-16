@@ -23,7 +23,7 @@ class EmergencyNoticeDataModel extends DataModel
         }
     }
 
-    public function getLatestEmergencyNotice()
+    public function getFeaturedEmergencyNotice()
     {
         $items = $this->getAllEmergencyNotices();
         return count($items)>0 ? reset($items) : null;
@@ -35,7 +35,7 @@ class EmergencyNoticeDataModel extends DataModel
             
             $this->emergencyNotices = array();
             
-            $items = $this->getParsedData();
+            $items = $this->getData();
             foreach ($items as $item) {
                 if ($now - strtotime($item->getPubDate()) > $this->NOTICE_EXPIRATION) {
                     break; // items too old
