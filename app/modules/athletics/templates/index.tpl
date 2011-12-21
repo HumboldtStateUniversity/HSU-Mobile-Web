@@ -1,10 +1,14 @@
 {include file="findInclude:common/templates/header.tpl"}
-
+{* {include file="findInclude:common/templates/search.tpl"} *}
+	<div id="content-start">
+		<div id="content-start-inner">
+		</div><!-- #content-start-inner -->
+	</div><!-- #content-start -->
+<div class="content-area">
 {$tabBodies = array()}
 
 {if $topNews}
   {capture name="topnewsTab" assign="topnewsTab"}
-    {include file="findInclude:common/templates/search.tpl"}
      
     {include file="findInclude:modules/athletics/templates/stories.tpl" stories=$topNews}  
   {/capture}
@@ -35,5 +39,5 @@
 <div id="tabscontainer">
 {include file="findInclude:common/templates/tabs.tpl" tabBodies=$tabBodies smallTabs=true}
 </div>
-
+</div><!-- .content-area -->
 {include file="findInclude:common/templates/footer.tpl"}

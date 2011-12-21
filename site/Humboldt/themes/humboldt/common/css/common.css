@@ -1,0 +1,309 @@
+/* This CSS file contains most of the core theme CSS you'll need to customize your site's overall color scheme and fonts. */
+
+
+/* DUMPING IN RANDOM COMPLIANT STYLES, PROBABLY WANT TO MOVE THESE LATER */
+
+#header { width: 100%; height: 80px; background: #044531 url(/common/images/compliant/header-bg.jpg) top center no-repeat; }
+#header h1 { display: block; margin: 0 auto; padding-top: 14px; width: 230px; }
+
+#container { margin: 0; padding: 0; }
+
+#searchformcontainer { margin: 0; padding: 0 14px; width: 100%; height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
+	#searchformcontainer .searchwrapper { width: 100%; height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
+.emphasized { margin: 0; }
+#searchformcontainer .emphasized .forminput { margin: 8px auto 0 auto; display: block; width: 100%; border: 1px solid #00312b; -moz-box-shadow:inset 0 0 10px #003e14; -webkit-box-shadow:inset 0 0 10px #003e14; box-shadow:inset 0 0 10px #003e14; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+.forminput {  }
+.page-title { background: #00463d; padding: 4px 0; text-align: center; width: 100%; color: #fff; font-family: 'Lucida Grande'; font-weight: bold; font-size: 12pt; }
+	
+fieldset { margin: 0; }
+.inputcombo .combobutton { position: absolute; z-index: 10; top: 13px; right: 10px; width: 27px; height: 26px; }
+.inputcombo .forminput { margin: 5px 10px 0 10px; }
+.springboard { overflow: auto; border-bottom: 1px solid #177368; }
+
+#content { padding: 9px 0 10px 0; border-bottom: 1px solid #177368; }
+
+ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; text-shadow: 0 1px 0 #fff; padding: 4px 0 0 1px; }
+		
+#search-bg2 { width: 100%; margin: 0 auto; height: 50px; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
+.pagetitle { height: 22px; line-height: 16pt; font-family: 'Lucida Grande' sans-serif; font-weight: normal; font-size: 8pt; color: #fff; }
+.page-title { margin: 5px 0 6px;  }
+.breadcrumbs { background: url(/common/images/compliant/crumbs-top.png) top center no-repeat; width: 100%; }	
+	.breadcrumbs a img { display: block; float: left; margin-top: 2px; }
+#additional-input { clear: both; background: #000; height: 50px; }
+	
+#content-start { width: 100%; height: 22px; background: #fff url(/common/images/compliant/content-top-bg.png) repeat-x; }	
+		#content-start-inner { width: 100%; height: 22px; background: url(/common/images/compliant/content-top-bg2.png) top center no-repeat; }	
+.content-area { overflow: auto; background: #fff; }	
+
+	
+/* =========================================== HOME ==================================================== */
+	
+	
+.HomeModule ul.nav { background: none; border: none; padding: 0; margin: 10px; }
+.HomeModule ul.nav li.icon { background: #fff; clear: both; border: 1px solid #d8d8d8; padding: 0; margin: 1px 0px 0px 0px; background: #ffffff; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #c8d4d2 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; min-height: 52px; }
+	.HomeModule ul.nav li.icon a { text-indent: 8px; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; font-size: 12pt; line-height: 10pt; color: #005147; text-decoration: none; display: block; padding: 12px 0 0 0px; width: 100%; min-height: 42px; background: url(/common/images/arrow-right.png) bottom right no-repeat; }
+	.HomeModule ul.nav li.icon img { display: none; }
+		.home-nav a span { color: #005147; text-indent: 0px; margin: 4px 0 0 8px; font-family: Arial, sans-serif; font-size: 9pt; font-weight: normal; display: block; clear: both; width: 100%; }
+		
+.HomeModule .page-title { background: transparent; padding: 0; display: none; }
+	
+	
+/* =========================================== PEOPLE ==================================================== */
+	
+#search-text { color: #ebfff5; line-height: 11pt; font-size: 8pt; text-align: center; height: 62px; background: #1e6946 url(/common/images/compliant/search-bg6.png) top repeat-x;
+ }	
+	#search-text-inner { width: 100%; background: url(/common/images/compliant/search-bg3.png) top center no-repeat; }
+		#search-text-inner p { padding: 20px 25px 0 25px; }
+
+.PeopleModule #searchformcontainer { margin: 0; width: 100%; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x; }
+	.PeopleModule #searchformcontainer .searchwrapper { width: 100%; height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat; }	
+			.PeopleModule #searchformcontainer .emphasized .forminput { margin-top: 21px; }
+	
+.PeopleModule ul.nav { margin: 0;  }	
+	.PeopleModule ul.secondary li:first-child { border-top: 1px solid #b9cac1; }
+.PeopleModule .secondary { border-radius: 0px; }
+	
+.PeopleModule .inputcombo .forminput { margin: 17px 10px 0 10px; }
+
+
+/* ==================================== CALENDAR ==================================================== */
+
+
+.CalendarModule .nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 { color: #005147; }
+.CalendarModule .nonfocal { background: #fff; }
+.CalendarModule ul.nav { margin: 0; }
+	.CalendarModule ul.nav li:first-child { border-top: 1px solid #b9cac1; }
+
+
+
+/* ==================================== Emergency Module ==================================================== */
+
+		
+.EmergencyModule .focal { width: 100%; border: none; border-radius: 0;  margin: 0; padding: 0 20px 15px 20px; }		
+.EmergencyModule ul.nav { margin: 10px; }	
+
+	
+	
+/* ==================================== Athletics Module ==================================================== */
+		
+		
+.AthleticsModule ul li.pagerlink a { display: block; text-align: center; background: #005147; border: 1px solid #177368; margin: 3px 10px; padding; 8px 20px; color: #fff; background: -moz-linear-gradient(top,  #1e6947 0%, #00392a 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e6947), color-stop(100%,#00392a)); background: -webkit-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -o-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -ms-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: linear-gradient(top,  #1e6947 0%,#00392a 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e6947', endColorstr='#00392a',GradientType=0 ); }			
+		
+.AthleticsModule #tabscontainer { padding: 0; }
+.AthleticsModule #tabbodies { border-color: #b9cac1; }
+	.AthleticsModule .tabbody { padding: 0; }
+	.AthleticsModule #tabs li { border: 1px solid #b9cac1 }
+	
+	
+/* ==================================== PERSISTENT-NAV ==================================================== */
+
+
+#persistent-nav { width: 100%; border-bottom: 1px solid #177368; border-top: 1px solid #177368; background: #1e6947; background: -moz-linear-gradient(top,  #1e6947 0%, #00392a 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e6947), color-stop(100%,#00392a)); background: -webkit-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -o-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -ms-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: linear-gradient(top,  #1e6947 0%,#00392a 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e6947', endColorstr='#00392a',GradientType=0 ); }
+	#persistent-nav ul { margin: 0; padding: 0; }
+		#persistent-nav ul li { padding: 4px 10px 2px 10px; display: block; list-style-type: none; width: 100%; border-top: 1px solid #003e14; }
+			#persistent-nav ul li a, #persistent-nav ul li { font-size: 10pt; font-weight: bold; font-family: Arial, sans-serif; color: #bdd6c6; }
+			#persistent-nav ul li a { text-decoration: none; }
+			
+			
+/* =========================================  FOOTER ======================================================= */
+
+
+#container #footer { text-shadow: 0 1px 0 #09462f; padding-top: 0px; margin: 0; border-top: 1px solid #003e14; width: 100%; min-height: 147px; background: #044632 url(/common/images/compliant/footer-bg.jpg) top center no-repeat; color: #fff; }
+	#footer a { color: #fff; text-decoration: none; }
+	#footer span.color a, #container #footer span.color { color: #e5e2b9; }
+	#footer span.large { font-weight: bold; font-size: 12pt; font-family: 'Lucida Grande', sans-serif; }
+	#footer #f-navblock { font-family: Arial, sans-serif; text-align: center; padding-top: 4px;}
+	#footer #f-contact-info { font-family: Arial, sans-serif; text-align: right; margin: 15px 10px 0 0; font-size: 9pt; line-height: 14pt; }
+	
+		
+		
+/* Overall colors and fonts */
+
+body { background: #044531 url(/common/images/compliant/header-bg.jpg) top center no-repeat; font: 17px/1.33em sans-serif; }
+
+body, th, td, li, option, select, input { color: #00463d; }
+
+a, a:visited, .focal a, .focal a:visited, .tabbody a, .tabbody a:visited { color: #005147; }
+
+.nonfocal a, .nonfocal a:visited { color: #005147; }
+
+h1 { font-family: sans-serif; font-size: 170.6%; line-height: 1.25em; font-weight: normal; color: #333; }
+h2 { font-family: sans-serif; font-size: 123.5%; font-weight: normal; color: #005147; }
+h3 { font-family: sans-serif; font-size: 100%; font-weight: bold; color: #005147; }
+h4 { font-family: sans-serif; font-size: 100%; font-weight: normal; color: #333; }
+
+dt, .label, .legend, .legend h2, .legend h3, .searchlegend {
+	/* Accent text color for several types of secondary text that appears on white backgrounds */
+	/* e.g., label in label/value pairs, e.g., People Directory detail screen and for labels in certain calendar listing screens */
+	/* Often the same as the secondary text color defined in the next rule */
+	color: #9ec2ac;
+}
+
+.address, .smallprint, .fineprint, .dek {
+	/* Secondary text color for several types of secondary text */
+	color: #555;
+}
+
+
+
+/* Text labels for springboards (grids of icons, e.g., homescreen) */
+
+.springboard a, .springboard a:visited { color: #005147; }
+
+
+
+/* Major content blocks */
+
+.focal { /* Focal content div */ background-color: #fff; border-color: #fff; }
+
+.nonfocal, .nonfocal .legend, .formlabel {
+	color: #555;
+}
+
+.nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 {
+	color: #005147;
+}
+
+.shaded, .HomeModule .blockborder {
+	background-color: #f3f3f3;
+	color: #333;
+}
+
+.shaded h1, .shaded h2, .shaded h3, .shaded h4 {
+	color: #005147;
+}
+
+
+
+/* Nav bar at top of all screens other than home screen */
+
+#navbar {
+	height: 22px; margin: 0;
+	background: transparent url(/common/images/compliant/crumbs-bg.png) repeat-x;
+	font-size: 94.1%;
+}
+
+.breadcrumbs, .breadcrumbs a, .breadcrumbs a:visited, .pagetitle { }
+
+.breadcrumbs a { display: inline; height: inherit; line-height:inherit; vertical-align: inherit; margin-left: none; padding: 0 10px; background-image: none; text-decoration: none; color: #fff; } 
+
+/* Navigation and results lists */
+
+.nav, .results { background-color: #fff; border-color: #fff; margin-top: 0px; }
+
+.nav, .results, .nav a, .nav a:visited, .nav span.nolink, .results a, .results a:visited  {
+	/* Text color for all navigation and results lists */
+	color: #333;
+}
+
+.nav li, .results li, ul.focal li { border-top: 1px solid #b9cac1; }
+.secondary { font-size: 95%; background-color: #fff; border: none; }
+.secondary, .secondary a, .secondary a:visited { color: #005147; }
+.secondary .smallprint { color: #666; }
+.nav .badge { color: #fff; background-color: #c00; }
+
+
+
+/* Sitewide footer */
+
+#footer { font-size: 70.6%; line-height: 1.167em; }
+#footer .copyright { text-decoration: none; }
+#footerlinks { color: #fff; }
+#footer, #footerlinks a, #footerlinks a:visited, a.copyright, a.copyright:visited { color: #555; }
+
+
+
+/* Next/previous navigation (e.g., going from day to day in events calendar) and paging navigation (for content or lists spread across multiple pages) */
+
+.sidenav, .sidenav2, .paging { font-size: 93%; color: #fff; }
+
+.sidenav a, .sidenav a:visited, .sidenav2 a, .sidenav2 a:visited, .paging a:visited { color: #005147; }
+
+
+
+/* Tabs - for compliant, tablet, and touch */
+
+#tabs li {
+	border: 1px solid #bbb;	/* Should match #tabbodies border-color */
+	background-color: #bbb;	/* Should match #tabbodies border-color */ 
+}
+
+#tabs li.active {
+	border-bottom: 1px solid #fff;	/* Should match #tabbodies background-color */
+	background-color: #fff;	/* Should match #tabbodies background-color */ }
+
+#tabs li a { color: #005147; }
+
+#tabs li.active a {
+	/* Text label of currently selected tab */
+	color: #005147;
+}
+
+#tabs li.greyedout {
+	/* Text label of disabled tab */
+  	color: #005147;
+}
+
+#tabbodies { border-color: #bbb; background-color: #fff; }
+.tabbody .nested { background-color: #eee; }
+
+
+
+/* Form elements */
+
+form { margin: 0; }
+.forminput { border-color: #00312b; -moz-box-shadow:inset 0 0 10px #003e14; -webkit-box-shadow:inset 0 0 10px #003e14; box-shadow:inset 0 0 10px #003e14; } 
+
+.inputcombo .forminput {
+
+	border: 1px 0 1px 1px solid #666; 	
+	-webkit-border-bottom-left-radius: 8px;	
+	-webkit-border-top-left-radius: 8px;	
+	border-bottom-left-radius: 8px;	
+	border-top-left-radius: 8px;	
+} 
+
+.emphasized  .forminput {
+
+
+	border: 3px solid #666; 		
+	-webkit-border-bottom-left-radius: 10px; 		
+	-webkit-border-top-left-radius: 10px;	
+	border-bottom-left-radius: 10px; 		
+	border-top-left-radius: 10px;	
+} 
+
+.submitbutton {
+	background-color: #666;
+	color: #fff;
+	font-size: 93.75%;
+} 
+
+
+
+/* Headlines and bylines */
+
+h1.slugline, h2.itemtitle {
+	/* Special headline style used in news, videos, and other modules with story-type content detail */
+	font-family: sans-serif;
+    font-size: 129.4%;
+	line-height: 1.25em;
+	font-weight: normal;
+    color:#333;
+	margin: 0 0 0.75em 0;
+}
+
+.byline { min-height:40px; font-size: 64.7%; line-height: 1.25em; padding-bottom: 0.33em; margin-bottom: 1.33em; border-bottom: 1px dotted #999; }
+.staticContentBody { background-color: #fff; color: #333; }
+.staticContentBody h1 { color: #333; }
+.staticContentBody h2 { color: #333; }
+.staticContentBody h3 { color: #333; }
+.staticContentBody h4 { color: #666; }
+
+
+
+/* Data charts - compliant, tablet */
+
+.rowbar { background: #333 url(/common/images/rowbar.png) repeat-x; }
+.colbar { background: #333 url(/common/images/colbar.png) repeat-y; }
+.average { border-color: #c00; }

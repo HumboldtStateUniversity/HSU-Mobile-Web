@@ -1,0 +1,49 @@
+{capture name="banner" assign="banner"}
+<div id="header">
+  <h1 id="homelogo"{if isset($topItem)} class="roomfornew"{/if}>
+    <a href="#"><img src="/modules/{$moduleID}/images/logo-home{$imageExt}" width="{$banner_width|default:265}" height="{$banner_height|default:45}" alt="{$strings.SITE_NAME|escape}" /></a>
+  </h1>
+</div><!-- #header -->
+{/capture}
+
+{include file="findInclude:common/templates/header.tpl" customHeader=$banner scalable=false}
+
+{if $showFederatedSearch}
+{block name="federatedSearch"}
+{include file="findInclude:common/templates/search.tpl"}
+{/block}
+{/if}
+
+{if $displayType == 'springboard'}
+  {include file="findInclude:common/templates/springboard.tpl" springboardItems=$modules springboardID="homegrid"}
+  
+{elseif $displayType == 'list'}
+  {$primaryModules = array()}
+  {$secondaryModules = array()}
+  {$foundSeparator = false}
+  {foreach $modules as $module}
+    {if $module['separator']}
+      {$foundSeparator = true}
+    {elseif $foundSeparator}
+      {$secondaryModules[] = $module}
+    {else}
+      {$primaryModules[] = $module}
+    {/if}
+  {/foreach}
+
+  {include file="findInclude:common/templates/navlist.tpl" navlistItems=$primaryModules}
+  {if $secondaryModules}
+  {include file="findInclude:common/templates/navlist.tpl" navlistItems=$secondaryModules accessKeyLink=false}
+  {/if}
+{/if}
+
+
+
+
+{block name="homeFooter"}
+{/block}
+
+{block name="downloadText"} 
+{/block}
+
+{include file="findInclude:common/templates/footer.tpl"}
