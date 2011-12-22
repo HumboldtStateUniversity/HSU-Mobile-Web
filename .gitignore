@@ -9,5 +9,5 @@ site/*/logs/*
 nbrproject
 nbproject/*
 hsumobile.esproj/Project.espressostorage
-
-hsumobile.esproj/user.mmh61.espressostorage
+site/Humboldt/data/db.sqlite
+site/Universitas/data/db.sqlite
