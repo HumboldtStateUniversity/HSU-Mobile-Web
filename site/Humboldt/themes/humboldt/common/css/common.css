@@ -7,9 +7,16 @@
 #header h1 { display: block; margin: 0 auto; padding-top: 14px; width: 230px; }
 
 #container { margin: 0; padding: 0; }
+<<<<<<< HEAD
 
 #searchformcontainer { margin: 0; padding: 0 14px; min-height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
 	#searchformcontainer .searchwrapper { width: 100%; min-height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
+=======
+.nonfocal form {margin-right: 8px;
+}
+#searchformcontainer { margin: 0; padding: 0 14px; height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
+	#searchformcontainer .searchwrapper { width: 100%; height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
+>>>>>>> 3f12e11c59231d8fe65422d63e53aa2bebdb3c5a
 .emphasized { margin: 0; }
 #searchformcontainer .emphasized .forminput { margin: 8px auto 0 auto; display: block; width: 100%; border: 1px solid #00312b; -moz-box-shadow:inset 0 0 10px #003e14; -webkit-box-shadow:inset 0 0 10px #003e14; box-shadow:inset 0 0 10px #003e14; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
 .forminput {  }
@@ -71,6 +78,8 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .PeopleModule .inputcombo .combobutton { margin: 13px 0px 0 0px; }
 body #persistent-nav ul li { width: inherit; }
 
+.PeopleModule .emphasized { margin: 0px 0 14px 0; }
+
 /* ==================================== CALENDAR ==================================================== */
 
 
@@ -91,7 +100,8 @@ body #persistent-nav ul li { width: inherit; }
 
 .CalendarModule .content-area { overflow: auto; background: #fff; clear: both; }	
 .CalendarModule a.external { background-position: center right; background-repeat: no-repeat; }
-	
+.CalendarModule .emphasized { margin: 0px 0 14px 0; }
+
 /* ==================================== Emergency Module ==================================================== */
 
 		
