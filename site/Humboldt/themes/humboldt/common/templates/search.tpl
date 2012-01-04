@@ -50,9 +50,11 @@
           {$hiddenArgHTML}
         </fieldset>
         {if isset($additionalInputs)}
+		<div style="height: 40px; margin: 20px 0; clear: both;">
         	<fieldset>
             	{$additionalInputs}
         	</fieldset>
+        </div>
         {/if}
       </form>
       </div>
@@ -63,7 +65,6 @@
 		</div><!-- #content-start-inner -->
 	</div><!-- #content-start -->
 	<div class="content-area">
-        {$tipHTML}
         {$inlineErrorHTML}
 	</div><!-- .content-area -->
 	{/if}

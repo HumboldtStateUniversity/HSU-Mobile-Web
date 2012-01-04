@@ -1,4 +1,5 @@
 <div class="content-area">
+
 {$defaultTemplateFile="findInclude:common/templates/listItem.tpl"}
 {$listItemTemplateFile=$listItemTemplateFile|default:$defaultTemplateFile}
 <ul class="results"{if $resultslistID} id="{$resultslistID}"{/if}>

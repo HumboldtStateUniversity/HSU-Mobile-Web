@@ -8,8 +8,8 @@
 
 #container { margin: 0; padding: 0; }
 
-#searchformcontainer { margin: 0; padding: 0 14px; width: 100%; height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
-	#searchformcontainer .searchwrapper { width: 100%; height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
+#searchformcontainer { margin: 0; padding: 0 14px; min-height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
+	#searchformcontainer .searchwrapper { width: 100%; min-height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
 .emphasized { margin: 0; }
 #searchformcontainer .emphasized .forminput { margin: 8px auto 0 auto; display: block; width: 100%; border: 1px solid #00312b; -moz-box-shadow:inset 0 0 10px #003e14; -webkit-box-shadow:inset 0 0 10px #003e14; box-shadow:inset 0 0 10px #003e14; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
 .forminput {  }
@@ -35,12 +35,17 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 		#content-start-inner { width: 100%; height: 22px; background: url(/common/images/compliant/content-top-bg2.png) top center no-repeat; }	
 .content-area { overflow: auto; background: #fff; }	
 
-	
+.nonfocal form { margin-left: -4px; margin-right: 8px; }
+.nav a, .results a, .secondary a, a.arrow {  }
+.nav li.icon a { margin: 0; position: inherit; background-size: 42px 52px; }
+#navbar.helpon { padding-right: 0; }
+
+
 /* =========================================== HOME ==================================================== */
 	
 	
-.HomeModule ul.nav { background: none; border: none; padding: 0; margin: 10px; }
-.HomeModule ul.nav li.icon { background: #fff; clear: both; border: 1px solid #d8d8d8; padding: 0; margin: 1px 0px 0px 0px; background: #ffffff; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #c8d4d2 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; min-height: 52px; }
+.HomeModule ul.nav { background: none; background-image: none; border: none; padding: 0; margin: 10px; }
+.HomeModule ul.nav li.icon { background: #fff; background-image: none; clear: both; border: 1px solid #d8d8d8; padding: 0; margin: 1px 0px 0px 0px; background: #ffffff; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #c8d4d2 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; min-height: 52px; }
 	.HomeModule ul.nav li.icon a { text-indent: 8px; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; font-size: 12pt; line-height: 10pt; color: #005147; text-decoration: none; display: block; padding: 12px 0 0 0px; width: 100%; min-height: 42px; background: url(/common/images/arrow-right.png) bottom right no-repeat; }
 	.HomeModule ul.nav li.icon img { display: none; }
 		.home-nav a span { color: #005147; text-indent: 0px; margin: 4px 0 0 8px; font-family: Arial, sans-serif; font-size: 9pt; font-weight: normal; display: block; clear: both; width: 100%; }
@@ -55,7 +60,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	#search-text-inner { width: 100%; background: url(/common/images/compliant/search-bg3.png) top center no-repeat; }
 		#search-text-inner p { padding: 20px 25px 0 25px; }
 
-.PeopleModule #searchformcontainer { margin: 0; width: 100%; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x; }
+.PeopleModule #searchformcontainer { margin: 0; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x; }
 	.PeopleModule #searchformcontainer .searchwrapper { width: 100%; height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat; }	
 			.PeopleModule #searchformcontainer .emphasized .forminput { margin-top: 21px; }
 	
@@ -63,23 +68,34 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.PeopleModule ul.secondary li:first-child { border-top: 1px solid #b9cac1; }
 .PeopleModule .secondary { border-radius: 0px; }
 	
-.PeopleModule .inputcombo .forminput { margin: 17px 10px 0 10px; }
-
+.PeopleModule .inputcombo .combobutton { margin: 13px 0px 0 0px; }
+body #persistent-nav ul li { width: inherit; }
 
 /* ==================================== CALENDAR ==================================================== */
 
 
+.CalendarModule #searchformcontainer { margin: 0; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x; }
+	.CalendarModule #searchformcontainer .searchwrapper { width: 100%; height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat; }	
+			.CalendarModule #searchformcontainer .emphasized .forminput { margin-top: 21px; }
+.CalendarModule .inputcombo .combobutton { margin: 13px 0px 0 0px; }
 .CalendarModule .nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 { color: #005147; }
-.CalendarModule .nonfocal { background: #fff; }
+.CalendarModule .nonfocal { background: #fff; margin-top: 0px; }
 .CalendarModule ul.nav { margin: 0; }
 	.CalendarModule ul.nav li:first-child { border-top: 1px solid #b9cac1; }
+.CalendarModule ul.results li:first-child { border-top: 1px solid #b9cac1; }
+.sidenav2 { margin: 5px 0; background: #044632; height: 38px; border-top: 1px solid #177368; border-bottom: 1px solid #177368; }
+	.CalendarModule .sidenav2 a { margin: 4px 0 6px 0; color: #fff; }
+	.CalendarModule .sidenav2 a.sidenav-prev { color: #fff; }
+.CalendarModule #searchformcontainer { min-height: 50px; }
+.CalendarModule #searchformcontainer .searchwrapper { background-position: top center; }
 
-
-
+.CalendarModule .content-area { overflow: auto; background: #fff; clear: both; }	
+.CalendarModule a.external { background-position: center right; background-repeat: no-repeat; }
+	
 /* ==================================== Emergency Module ==================================================== */
 
 		
-.EmergencyModule .focal { width: 100%; border: none; border-radius: 0;  margin: 0; padding: 0 20px 15px 20px; }		
+.EmergencyModule .focal { border: none; border-radius: 0;  margin: 0; padding: 0 20px 15px 20px; }		
 .EmergencyModule ul.nav { margin: 10px; }	
 
 	
@@ -154,24 +170,11 @@ dt, .label, .legend, .legend h2, .legend h3, .searchlegend {
 
 /* Major content blocks */
 
-.focal { /* Focal content div */ background-color: #fff; border-color: #fff; }
-
-.nonfocal, .nonfocal .legend, .formlabel {
-	color: #555;
-}
-
-.nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 {
-	color: #005147;
-}
-
-.shaded, .HomeModule .blockborder {
-	background-color: #f3f3f3;
-	color: #333;
-}
-
-.shaded h1, .shaded h2, .shaded h3, .shaded h4 {
-	color: #005147;
-}
+.focal { background-color: #fff; border-color: #fff; }
+.nonfocal, .nonfocal .legend, .formlabel { color: #555; }
+.nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 { color: #005147; }
+.shaded, .HomeModule .blockborder { background-color: #f3f3f3; color: #333; }
+.shaded h1, .shaded h2, .shaded h3, .shaded h4 { color: #005147; }
 
 
 
