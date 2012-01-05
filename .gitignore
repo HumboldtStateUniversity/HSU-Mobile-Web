@@ -3,6 +3,7 @@
 .DS_Store
 Thumbs.db
 
+site/*/data/db.sqlite
 site/*/cache/*
 site/*/logs/*
 *-local.ini
@@ -10,5 +11,3 @@ nbrproject
 nbproject/*
 
 site/Humboldt/themes/humboldt/common/templates/search.tpl
-
-.gitignore
