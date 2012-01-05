@@ -9,3 +9,5 @@ site/*/logs/*
 *-local.ini
 nbrproject
 nbproject/*
+
+site/Humboldt/themes/humboldt/common/templates/search.tpl

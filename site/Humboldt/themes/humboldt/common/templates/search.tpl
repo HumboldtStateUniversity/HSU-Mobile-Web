@@ -41,6 +41,14 @@
       	</div><!-- search-text-inner -->
 	</div><!-- #search-text -->
 	{/if}
+	{if $moduleID == 'news'}
+    <div id="search-text">
+    	<div id="search-text-inner">
+      	<p>The latest news from around campus.</p>
+      	</div><!-- search-text-inner -->
+	</div><!-- #search-text -->
+	{/if}
+
     <div class="nonfocal" id="searchformcontainer">
       <div class="searchwrapper">
       <form method="get" action="{$searchPage|default:'search'}">
@@ -50,9 +58,11 @@
           {$hiddenArgHTML}
         </fieldset>
         {if isset($additionalInputs)}
+		<div style="height: 40px; margin: 20px 0; clear: both;">
         	<fieldset>
             	{$additionalInputs}
         	</fieldset>
+        </div>
         {/if}
       </form>
       </div>
@@ -63,7 +73,6 @@
 		</div><!-- #content-start-inner -->
 	</div><!-- #content-start -->
 	<div class="content-area">
-        {$tipHTML}
         {$inlineErrorHTML}
 	</div><!-- .content-area -->
 	{/if}

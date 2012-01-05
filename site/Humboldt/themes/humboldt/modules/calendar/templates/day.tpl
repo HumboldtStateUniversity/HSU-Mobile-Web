@@ -3,9 +3,7 @@
     <div id="content-start-inner">
     </div><!-- #content-start-inner -->
 </div><!-- #content-start -->
-{include file="findInclude:common/templates/results.tpl"
-     results=$contactNavListItems
-     accessKey=false
-     subTitleNewline=true}
-
+<div class="content-area">
+{include file="findInclude:modules/calendar/templates/include/eventslist.tpl" title=$feedTitle date=$current}
+</div><!-- .content-area -->
 {include file="findInclude:common/templates/footer.tpl"}
