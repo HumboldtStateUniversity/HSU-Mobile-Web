@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+	<Document>
+    <name>Humboldt State Campus</name>
+  <Placemark>
+    <name>Alder Residence Hall</name>
+    <Point>
+      <coordinates>-124.078635,40.879686</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Art Building A</name>
+    <Point>
+      <coordinates>-124.07812,40.875979</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Art Building B</name>
+    <Point>
+      <coordinates>-124.078088,40.876312</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Baiocchi House</name>
+    <Point>
+      <coordinates>-124.078023,40.87197</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Behavioral &amp; Social Sciences Building</name>
+    <Point>
+      <coordinates>-124.076889,40.87303</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Boat Facility</name>
+    <Point>
+      <coordinates>-124.074354,40.872965</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Brero House/ITEPP</name>
+    <Point>
+      <coordinates>-124.080432,40.877545</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Bret Harte House</name>
+    <Point>
+      <coordinates>-124.079713,40.875659</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Brookins House</name>
+    <Point>
+      <coordinates>-124.078313,40.875286</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Buck House/CCAT</name>
+    <Point>
+      <coordinates>-124.077476,40.872539</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Campus Apartments</name>
+    <Point>
+      <coordinates>-124.080545,40.875549</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Campus Events Field</name>
+    <Point>
+      <coordinates>-124.077498,40.874243</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cedar Residence Hall</name>
+    <Point>
+      <coordinates>-124.078587,40.879435</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Ceramics Lab</name>
+    <Point>
+      <coordinates>-124.081333,40.875192</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name> Child Development Lab, Swetman</name>
+    <Point>
+      <coordinates>-124.079391,40.873988</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Chinquapin Residence Hall</name>
+    <Point>
+      <coordinates>-124.078246,40.879571</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>College Creek Apartments</name>
+    <Point>
+      <coordinates>-124.080636,40.873898</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>College Creek Field</name>
+    <Point>
+      <coordinates>-124.080711,40.873132</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Creekside Lounge</name>
+    <Point>
+      <coordinates>-124.075695,40.878291</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Creekview Apartments</name>
+    <Point>
+      <coordinates>-124.074901,40.87821</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Cypress Residence Hall</name>
+    <Point>
+      <coordinates>-124.078431,40.878405</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Fern Residence Hall</name>
+    <Point>
+      <coordinates>-124.074225,40.877861</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Feuerwerker House</name>
+    <Point>
+      <coordinates>-124.080904,40.877711</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Fisheries Hatchery</name>
+    <Point>
+      <coordinates>-124.076178,40.874284</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Forbes Complex</name>
+    <Point>
+      <coordinates>-124.076092,40.875383</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Forestry Building</name>
+    <Point>
+      <coordinates>-124.077305,40.873602</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Founders Hall</name>
+    <Point>
+      <coordinates>-124.077385,40.877155</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Gist Hall</name>
+    <Point>
+      <coordinates>-124.079016,40.875565</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Greenhouse (Science E)</name>
+    <Point>
+      <coordinates>-124.077321,40.87471</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Hadley House</name>
+    <Point>
+      <coordinates>-124.08048,40.875979</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Hagopian House</name>
+    <Point>
+      <coordinates>-124.080427,40.877667</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Harry Griffith Hall</name>
+    <Point>
+      <coordinates>-124.078839,40.873988</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Hemlock Residence Hall</name>
+    <Point>
+      <coordinates>-124.077927,40.879642</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Jenkins Hall</name>
+    <Point>
+      <coordinates>-124.0782,40.875638</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Jensen House</name>
+    <Point>
+      <coordinates>-124.078061,40.872381</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Jolly Giant Commons</name>
+    <Point>
+      <coordinates>-124.078614,40.878871</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Juniper Residence Hall</name>
+    <Point>
+      <coordinates>-124.075121,40.878453</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Kinesiology and Athletics</name>
+    <Point>
+      <coordinates>-124.075094,40.874892</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Laurel Residence Hall</name>
+    <Point>
+      <coordinates>-124.075357,40.878076</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Library</name>
+    <Point>
+      <coordinates>-124.079906,40.876592</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Little Apartments</name>
+    <Point>
+      <coordinates>-124.080373,40.877403</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Madrone Residence Hall</name>
+    <Point>
+      <coordinates>-124.077653,40.879512</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Maple Residence Hall</name>
+    <Point>
+      <coordinates>-124.077685,40.879248</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Marketing and Communications</name>
+    <Point>
+      <coordinates>-124.078748,40.871984</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Marine Wildlife Care Center</name>
+    <Point>
+      <coordinates>-124.074617,40.873643</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Mary Warren House</name>
+    <Point>
+      <coordinates>-124.078152,40.871769</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>MultiCultural Center</name>
+    <Point>
+      <coordinates>-124.080201,40.875987</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Music Building A</name>
+    <Point>
+      <coordinates>-124.078715,40.876742</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Music Building B</name>
+    <Point>
+      <coordinates>-124.078259,40.876721</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Natural Resources Building</name>
+    <Point>
+      <coordinates>-124.077905,40.873574</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Nelson Hall</name>
+    <Point>
+      <coordinates>-124.079322,40.877468</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Parking Services</name>
+    <Point>
+      <coordinates>-124.079686,40.875071</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Pepperwood Residence Hall</name>
+    <Point>
+      <coordinates>-124.077766,40.878956</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Plant Operations</name>
+    <Point>
+      <coordinates>-124.079252,40.872264</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Redwood Bowl</name>
+    <Point>
+      <coordinates>-124.076285,40.877164</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Redwood Plaza</name>
+    <Point>
+      <coordinates>-124.075663,40.875569</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Redwood Residence Hall</name>
+    <Point>
+      <coordinates>-124.079182,40.878019</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Schmidt House</name>
+    <Point>
+      <coordinates>-124.078243,40.873136</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Schatz Energy Research Center</name>
+    <Point>
+      <coordinates>-124.07804,40.872929</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Science Building A</name>
+    <Point>
+      <coordinates>-124.077396,40.875464</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Science Building B</name>
+    <Point>
+      <coordinates>-124.077203,40.875067</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Science Building C</name>
+    <Point>
+      <coordinates>-124.077637,40.875115</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Science Building D</name>
+    <Point>
+      <coordinates>-124.078259,40.874766</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Sculpture Lab</name>
+    <Point>
+      <coordinates>-124.080968,40.875277</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Shipping and Receiving</name>
+    <Point>
+      <coordinates>-124.079107,40.872714</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Siemens Hall</name>
+    <Point>
+      <coordinates>-124.07937,40.877034</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Student &amp; Business Services</name>
+    <Point>
+      <coordinates>-124.079169,40.874566</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Student Health Center</name>
+    <Point>
+      <coordinates>-124.079863,40.877585</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Student Recreation Center</name>
+    <Point>
+      <coordinates>-124.075191,40.87559</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Sunset Residence Hall</name>
+    <Point>
+      <coordinates>-124.079869,40.878478</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Tan Oak Residence Hall</name>
+    <Point>
+      <coordinates>-124.077492,40.879013</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Telonicher House</name>
+    <Point>
+      <coordinates>-124.079751,40.875987</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Theatre Arts Building</name>
+    <Point>
+      <coordinates>-124.079209,40.875979</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Toddler Center</name>
+    <Point>
+      <coordinates>-124.078351,40.872028</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Trinity Annex</name>
+    <Point>
+      <coordinates>-124.079724,40.87142</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>University Center</name>
+    <Point>
+      <coordinates>-124.0782,40.877508</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Upper Playing Field</name>
+    <Point>
+      <coordinates>-124.074799,40.876648</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Van Matre Hall</name>
+    <Point>
+      <coordinates>-124.077101,40.876506</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Wagner House</name>
+    <Point>
+      <coordinates>-124.081188,40.875565</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Walter Warren House</name>
+    <Point>
+      <coordinates>-124.078447,40.871761</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Warren House</name>
+    <Point>
+      <coordinates>-124.080003,40.875655</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>West Gym</name>
+    <Point>
+      <coordinates>-124.076285,40.875707</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Wildlife and Fisheries Building</name>
+    <Point>
+      <coordinates>-124.076698,40.874685</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Wildlife Facilities</name>
+    <Point>
+      <coordinates>-124.076672,40.874182</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Willow Residence Hall</name>
+    <Point>
+      <coordinates>-124.074805,40.8778</coordinates>
+    </Point>
+  </Placemark>
+</Document>
+</kml>
