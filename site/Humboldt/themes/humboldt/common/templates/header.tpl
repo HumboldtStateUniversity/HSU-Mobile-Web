@@ -18,13 +18,15 @@
     <link href="{$cssURL|escape}" rel="stylesheet" media="all" type="text/css"/>
   {/foreach}
   
-  
   {block name="javascript"}
       <script type="text/javascript">var URL_BASE='{$smarty.const.URL_BASE}';</script>
     {if strlen($GOOGLE_ANALYTICS_ID)}
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{$GOOGLE_ANALYTICS_ID}']);
+        {if $GOOGLE_ANALYTICS_DOMAIN}
+        _gaq.push(['_setDomainName', '{$GOOGLE_ANALYTICS_DOMAIN}']);
+        {/if}
         _gaq.push(['_trackPageview']);
       </script>
     {/if}
@@ -44,10 +46,18 @@
 
     <script type="text/javascript">
       function onOrientationChange() {ldelim}
-        rotateScreen();
-        {foreach $onOrientationChangeBlocks as $script}
-          {$script}
-        {/foreach}
+        {* the galaxy tab sends orientation change events constantly *}
+        if (typeof onOrientationChange.lastOrientation == 'undefined') {ldelim}
+          onOrientationChange.lastOrientation = null;
+        {rdelim}
+        var newOrientation = getOrientation();
+        if (newOrientation != onOrientationChange.lastOrientation) {ldelim}
+          rotateScreen();
+          {foreach $onOrientationChangeBlocks as $script}
+            {$script}
+          {/foreach}
+        {rdelim}
+        onOrientationChange.lastOrientation = newOrientation;
       {rdelim}
       if (window.addEventListener) {ldelim}
         window.addEventListener("orientationchange", onOrientationChange, false);
@@ -132,8 +142,6 @@
   {/block}
 {/capture}
 
-
-
 <body class="{$configModule|capitalize}Module" 
   {block name="onLoad"}
     {if count($onLoadBlocks) || count($onOrientationChangeBlocks)}
@@ -141,14 +149,10 @@
     {/if}
   {/block}>
   <div id="nonfooternav">
-    <a name="top"> </a>  
-    
-<div id="header">
-  <h1>
-    <a href="#"><img src="/common/images/logo-home{$imageExt}" width="{$banner_width|default:265}" height="{$banner_height|default:45}" alt="{$strings.SITE_NAME|escape}" /></a>
-  </h1>
-</div><!-- #header -->
-  
+    <a name="top"> </a>
+    {if isset($customHeader)}
+      {$customHeader|default:''}
+    {else}
       {block name="navbar"}
         <div id="navbar"{if $hasHelp} class="helpon"{/if}>
           <div class="breadcrumbs{if $isModuleHome} homepage{/if}">
@@ -158,16 +162,20 @@
             
             {$breadcrumbHTML}
             <span class="pagetitle">
-             {* {if $isModuleHome}
+              {if $isModuleHome}
                 <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" class="moduleicon" />
-              {/if} *}
+              {/if}
               {$pageTitle|sanitize_html:'inline'}
             </span>
           </div>
+          {if $hasHelp}
+            <div class="help">
+              <a href="{$helpLink}" title="{$helpLinkText}"><img src="/common/images/help.png" width="{$help_image_width|default:46}" height="{$help_image_height|default:45}" alt="{$helpLinkText}" /></a>
+            </div>
+          {/if}
         </div>
       {/block}
-   
+    {/if}
     {block name="containerStart"}
       <div id="container">
-      <div class="page-title">{$pageTitle|sanitize_html:'inline'}</div>
     {/block}
