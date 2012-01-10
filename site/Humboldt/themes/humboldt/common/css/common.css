@@ -156,6 +156,13 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .AthleticsModule #tabs li.active { margin-bottom: -2px; margin-top: 0; }
 
 
+/* ==================================== Athletics Module ==================================================== */	
+
+
+.ProgramsModule .results li.story { height: inherit; }
+.ProgramsModule .results li.story a { height: inherit; padding: 10px 0 0px 0; }
+.ProgramsModule .results li.story a .ellipsis { height: inherit; }
+
 
 /* ==================================== PERSISTENT-NAV ==================================================== */
 
