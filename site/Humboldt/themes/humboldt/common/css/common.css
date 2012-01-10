@@ -115,7 +115,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .CalendarModule fieldset select#calendars { display: none; }
 .CalendarModule .inputcombo .forminput { margin: 17px 10px 0 10px; }
 .CalendarModule .content-area { overflow: auto; background: #fff; clear: both; }	
-.CalendarModule a.external { background-position: center right; background-repeat: no-repeat; }
+.CalendarModule a.external { background-position: center right; background-repeat: no-repeat; width:auto;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;display:block;}
 .CalendarModule .emphasized { margin: 0px 0 14px 0; }
 
 
