@@ -2,9 +2,11 @@
 
 {include file="findInclude:common/templates/search.tpl"}
 
+{if $browseHint}
 <div class="nonfocal">
   <h3>{$browseHint}</h3>
 </div>
+{/if}
 
 {if $bookmarkStatus}
 {include file="findInclude:common/templates/bookmark.tpl" name=$cookieName item=$bookmarkItem exdate=$expireDate}
