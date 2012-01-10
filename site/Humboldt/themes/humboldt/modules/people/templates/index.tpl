@@ -1,4 +1,4 @@
-{include file="findInclude:common/templates/header.tpl"}
+{include file="findInclude:common/templates/header.tpl" scalable=false}
 
 {block name="searchbox"}
 {include file="findInclude:common/templates/search.tpl" resultCount=$resultCount tip=$searchTip}

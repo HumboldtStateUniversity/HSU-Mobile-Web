@@ -1,4 +1,4 @@
-{include file="findInclude:common/templates/header.tpl"}
+{include file="findInclude:common/templates/header.tpl" scalable=false}
 <div id="search-text">
 	<div id="search-text-inner">
       	<p>The latest events from around campus.</p>
