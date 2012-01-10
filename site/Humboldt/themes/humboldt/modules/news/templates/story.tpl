@@ -2,6 +2,11 @@
 {include file="findInclude:common/templates/header.tpl"}
 {/if}
 
+<div id="content-start">
+	<div id="content-start-inner">
+	</div><!-- #content-start-inner -->
+</div><!-- #content-start -->
+	
 <div class="news">
   <h1 class="slugline">{if $showLink}<a href="{$link}">{/if}{$title}{if $showLink}</a>{/if}</h1>
 

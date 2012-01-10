@@ -36,10 +36,10 @@
 {/capture}
 
 {block name="form"}
-  {if !$insideForm}
+{if !$insideForm}
     <div class="nonfocal" id="searchformcontainer">
       <form method="get" action="{$searchPage|default:'search'}">
-  {/if}
+{/if}
   
         <fieldset class="inputcombo{if $emphasized|default:$isModuleHome} emphasized{/if}">
           <div class="searchwrapper"><input class="forminput" type="text" id="{$inputName|default:'filter'}" name="{$inputName|default:'filter'}" placeholder="{$placeholder|default:''}" value="{$searchTerms|escape}" onfocus="androidPlaceholderFix(this);" /></div>

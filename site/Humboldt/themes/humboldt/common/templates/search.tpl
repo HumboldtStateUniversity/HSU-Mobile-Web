@@ -34,7 +34,8 @@
 {/capture}
 
 {block name="form"}
-    {if $moduleID == 'people'}
+ 
+  {if $moduleID == 'people'}
     <div id="search-text">
     	<div id="search-text-inner">
       	<p>Enter a person's name, department, email address , telephone number, location, or title.</p>
@@ -48,32 +49,33 @@
       	</div><!-- search-text-inner -->
 	</div><!-- #search-text -->
 	{/if}
-
     <div class="nonfocal" id="searchformcontainer">
       <div class="searchwrapper">
       <form method="get" action="{$searchPage|default:'search'}">
         <fieldset class="inputcombo{if $emphasized|default:$isModuleHome} emphasized{/if}">
           	<input class="forminput" type="text" id="{$inputName|default:'filter'}" name="{$inputName|default:'filter'}" placeholder="{$placeholder|default:''}" value="{$searchTerms|escape}" onfocus="androidPlaceholderFix(this);" />
-          <input class="combobutton" id="sch_btn" src="/common/images/search-button.png" type="image" />
-          {$hiddenArgHTML}
+          	<input class="combobutton" id="sch_btn" src="/common/images/search-button.png" type="image" />
+        	{$hiddenArgHTML}
         </fieldset>
+        </div>
+	</div>
         {if isset($additionalInputs)}
-		<div style="height: 40px; margin: 20px 0; clear: both;">
+		<div style="height: 25px; border-top: 1px solid #155c3f; margin: 0px 0px 15px; padding: 12px 10px 0; clear: both;">
         	<fieldset>
             	{$additionalInputs}
         	</fieldset>
         </div>
+        
         {/if}
       </form>
-      </div>
-	</div>
 	{if $moduleID != 'home'}	
 	<div id="content-start">
 		<div id="content-start-inner">
 		</div><!-- #content-start-inner -->
 	</div><!-- #content-start -->
-	<div class="content-area">
+	{if $inlineErrorHTML}<div class="content-area">
         {$inlineErrorHTML}
 	</div><!-- .content-area -->
+	{/if}
 	{/if}
 {/block}

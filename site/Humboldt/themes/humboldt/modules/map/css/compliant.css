@@ -1,8 +1,9 @@
 #footerlinks, #footer {display: block;}
+#tabscontainer{
 
+}
 #tabscontainer h2{
 	padding:6px 0;
-	width:100%;
 	color:#044531;
 	font-family: 'Lucida Grande';
 	font-size: 12pt;margin:0;
@@ -12,8 +13,9 @@
 	background: rgba(255, 255, 255, 0.4);
 	text-shadow: 2px 2px 0px #fff;
 	position:absolute;
-	top:0;
-	left:0;
+	top:8px;
+	left:8px;
+	right:8px; /* instead of width:100% */
 	z-index:1000;
 }
 .address{display:none;}
@@ -32,7 +34,8 @@
 }
 .tabbody {
 	min-height: none;
-	padding: 0;
+	padding: 8px;
+	background-color:#044531;
 }
 
 #photoTab {
@@ -67,7 +70,7 @@
 
 #mapzoom {
 	position: relative;
-	top:-56px;
+	top:-62px;
 	height: 50px;
 }
 

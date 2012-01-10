@@ -7,19 +7,14 @@
 #header h1 { display: block; margin: 0 auto; padding-top: 14px; width: 230px; }
 
 #container { margin: 0; padding: 0; }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 #searchformcontainer { margin: 0; padding: 0 14px; min-height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
 	#searchformcontainer .searchwrapper { width: 100%; min-height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
-=======
-=======
->>>>>>> e1cd15ac222f15d52471a567b8baefc081b9d138
-.nonfocal form {margin-right: 8px;
-}
+
+.nonfocal form {margin-right: 8px; }
 #searchformcontainer { margin: 0; padding: 0 14px; height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
 	#searchformcontainer .searchwrapper { width: 100%; height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
->>>>>>> 3f12e11c59231d8fe65422d63e53aa2bebdb3c5a
+
 .emphasized { margin: 0; }
 #searchformcontainer .emphasized .forminput { margin: 8px auto 0 auto; display: block; width: 100%; border: 1px solid #00312b; -moz-box-shadow:inset 0 0 10px #003e14; -webkit-box-shadow:inset 0 0 10px #003e14; box-shadow:inset 0 0 10px #003e14; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
 .forminput {  }
@@ -43,12 +38,16 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 #content-start { width: 100%; height: 22px; background: #fff url(/common/images/compliant/content-top-bg.png) repeat-x; }	
 		#content-start-inner { width: 100%; height: 22px; background: url(/common/images/compliant/content-top-bg2.png) top center no-repeat; }	
 .content-area { overflow: auto; background: #fff; }	
+	.content-area p { padding: 0 10px; }
+
 
 .nonfocal form { margin-left: -4px; margin-right: 8px; }
 .nav a, .results a, .secondary a, a.arrow {  }
 .nav li.icon a { margin: 0; position: inherit; background-size: 42px 52px; }
 #navbar.helpon { padding-right: 0; }
-.results li.story a .title { color: #005147;  }
+.results li.story { padding: 1px 10px; }
+.thumbnail { margin: 0 8px 0 4px; }
+	.results li.story a .title { color: #005147; }
 .results li.pagerlink { color: #fff; text-align: center; padding: 9px; margin: 2px 10px 4px; border: 1px solid #00312B; -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; background: #1e6947; background: -moz-linear-gradient(top,  #1e6947 0%, #00392a 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e6947), color-stop(100%,#00392a)); background: -webkit-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -o-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: -ms-linear-gradient(top,  #1e6947 0%,#00392a 100%); background: linear-gradient(top,  #1e6947 0%,#00392a 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e6947', endColorstr='#00392a',GradientType=0 ); }
 	.results li.pagerlink a { color: #fff; }
 
@@ -60,7 +59,8 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.HomeModule ul.nav li.icon a { text-indent: 8px; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; font-size: 12pt; line-height: 10pt; color: #005147; text-decoration: none; display: block; padding: 12px 0 0 0px; width: 100%; min-height: 42px; background: url(/common/images/arrow-right.png) bottom right no-repeat; }
 	.HomeModule ul.nav li.icon img { display: none; }
 		.home-nav a span { color: #005147; text-indent: 0px; margin: 4px 0 0 8px; font-family: Arial, sans-serif; font-size: 9pt; font-weight: normal; display: block; clear: both; width: 100%; }
-		
+.HomeModule h3.nonfocal { font-size: 12pt; background: #005147; color: #fff; width: 100%; margin: 0px 0; padding: 8px 10px; text-shadow: 1px 1px 1px #003b34; font-size: }
+	.HomeModule h3.nonfocal span { padding: 0 10px; font-weight: normal; font-size: 10pt; }		
 .HomeModule .page-title { background: transparent; padding: 0; display: none; }
 .HomeModule .emphasized { margin: 0px 0; }
 	
@@ -80,7 +80,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .PeopleModule .secondary { border-radius: 0px; }
 	
 .PeopleModule .inputcombo .combobutton { margin: 13px 0px 0 0px; }
-body #persistent-nav ul li { width: inherit; }
+.PeopleModule #persistent-nav ul li { width: inherit; }
 
 .PeopleModule .emphasized { margin: 0; }
 /*.PeopleModule .inputcombo .forminput { height: 38px; }  */
@@ -92,20 +92,28 @@ body #persistent-nav ul li { width: inherit; }
 
 
 .CalendarModule #searchformcontainer { margin: 0; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x; }
-	.CalendarModule #searchformcontainer .searchwrapper { width: 100%; height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat; }	
-			.CalendarModule #searchformcontainer .emphasized .forminput { margin-top: 21px; }
-.CalendarModule .inputcombo .combobutton { margin: 13px 0px 0 0px; }
+	.CalendarModule #searchformcontainer .searchwrapper { width: 100%; min-height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat; }	
+			.CalendarModule #searchformcontainer .emphasized .forminput { margin-top: 21px; width: auto;}
+.CalendarModule .inputcombo .combobutton { margin: 11px 0px 0 0px; }
 .CalendarModule .nonfocal h1, .nonfocal h2, .nonfocal h3, .nonfocal h4 { color: #005147; }
 .CalendarModule .nonfocal { background: #fff; margin-top: 0px; }
+.CalendarModule .nonfocal form { margin: 0; padding: 0; }
 .CalendarModule ul.nav { margin: 0; }
 	.CalendarModule ul.nav li:first-child { border-top: 1px solid #b9cac1; }
 .CalendarModule ul.results li:first-child { border-top: 1px solid #b9cac1; }
 .sidenav2 { margin: 5px 0; background: #044632; height: 38px; border-top: 1px solid #177368; border-bottom: 1px solid #177368; }
-	.CalendarModule .sidenav2 a { margin: 4px 0 6px 0; color: #fff; }
-	.CalendarModule .sidenav2 a.sidenav-prev { color: #fff; }
+	.CalendarModule .sidenav2 a, .CalendarModule .sidenav2 a:visited { margin: 4px 0 6px 0; color: #fff; }
+	.CalendarModule .sidenav2 a.sidenav-prev { margin-left: 10px; padding-left: 25px; background: url(/common/images/compliant/sidenav-arrows-left.png) center left no-repeat; }
+	.CalendarModule .sidenav2 a.sidenav-next { margin-right: 10px; padding-right: 25px; background: url(/common/images/compliant/sidenav-arrows.png) center right no-repeat; }
+		.CalendarModule .sidenav2 a:hover { color: #e5e2b9; }
 .CalendarModule #searchformcontainer { min-height: 50px; }
 .CalendarModule #searchformcontainer .searchwrapper { background-position: top center; }
 
+.CalendarModule .searchwrapper input { width: auto; }
+
+
+.CalendarModule fieldset select#calendars { display: none; }
+.CalendarModule .inputcombo .forminput { margin: 17px 10px 0 10px; }
 .CalendarModule .content-area { overflow: auto; background: #fff; clear: both; }	
 .CalendarModule a.external { background-position: center right; background-repeat: no-repeat; }
 .CalendarModule .emphasized { margin: 0px 0 14px 0; }
@@ -125,6 +133,7 @@ body #persistent-nav ul li { width: inherit; }
 .NewsModule .emphasized { margin: 0px 0; }
 .NewsModule .inputcombo .forminput { margin: 17px 0 0 0px; border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;
 }
+.NewsModule ul.results li.story img { display: none; }
 
 /* ==================================== Emergency Module ==================================================== */
 
@@ -134,16 +143,20 @@ body #persistent-nav ul li { width: inherit; }
 
 	
 	
-/* ==================================== Athletics Module ==================================================== */
-		
-		
+/* ==================================== Athletics Module ==================================================== */	
 
 .AthleticsModule #tabscontainer { padding: 0; }
 .AthleticsModule #tabbodies { border-color: #b9cac1; }
 	.AthleticsModule .tabbody { padding: 0; }
 	.AthleticsModule #tabs li { border: 1px solid #b9cac1 }
-	
-	
+.AthleticsModule .nav a { margin: 0 10px; }
+.AthleticsModule #tabbodies { margin: 0; }
+.AthleticsModule ul.results li.story img { display: none; }
+.AthleticsModule #tabs { list-style-type: none; margin: 0; padding: 0 0 0 4px; }
+.AthleticsModule #tabs li.active { margin-bottom: -2px; margin-top: 0; }
+
+
+
 /* ==================================== PERSISTENT-NAV ==================================================== */
 
 

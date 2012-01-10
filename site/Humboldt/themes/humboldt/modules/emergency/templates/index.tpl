@@ -1,4 +1,4 @@
-{include file="findInclude:common/templates/header.tpl" scalable=false}
+{include file="findInclude:common/templates/header.tpl"}
 
 {if $hasEmergencyFeed}
     <div id="content-start">
