@@ -225,7 +225,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>Kinesiology and Athletics</name>
+    <name>Kinesiology &amp; Athletics</name>
     <Point>
       <coordinates>-124.075094,40.874892</coordinates>
     </Point>
@@ -261,7 +261,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>Marketing and Communications</name>
+    <name>Marketing &amp; Communications</name>
     <Point>
       <coordinates>-124.078748,40.871984</coordinates>
     </Point>
@@ -387,7 +387,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>Shipping and Receiving</name>
+    <name>Shipping &amp; Receiving</name>
     <Point>
       <coordinates>-124.079107,40.872714</coordinates>
     </Point>
@@ -465,6 +465,12 @@
     </Point>
   </Placemark>
   <Placemark>
+    <name>Van Duzer Theater</name>
+    <Point>
+      <coordinates>-124.079209,40.875979</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
     <name>Van Matre Hall</name>
     <Point>
       <coordinates>-124.077101,40.876506</coordinates>
@@ -495,7 +501,7 @@
     </Point>
   </Placemark>
   <Placemark>
-    <name>Wildlife and Fisheries Building</name>
+    <name>Wildlife &amp; Fisheries Building</name>
     <Point>
       <coordinates>-124.076698,40.874685</coordinates>
     </Point>
