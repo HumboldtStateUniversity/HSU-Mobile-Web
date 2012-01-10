@@ -1,5 +1,5 @@
 {if !$ajax}
-{include file="findInclude:common/templates/header.tpl"}
+{include file="findInclude:common/templates/header.tpl" scalable=false}
 {/if}
 
 <div id="content-start">
