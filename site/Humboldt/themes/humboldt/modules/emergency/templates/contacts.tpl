@@ -1,4 +1,4 @@
-{include file="findInclude:common/templates/header.tpl"scalable=false}
+{include file="findInclude:common/templates/header.tpl" scalable=false}
 <div id="content-start">
     <div id="content-start-inner">
     </div><!-- #content-start-inner -->
