@@ -52,3 +52,13 @@
 	top: 26px;
 	right: 12px;
 }
+#navbar {
+	height: 45px;
+}
+.homepage .pagetitle, .module {
+	display: inline-block;
+	max-width: 210px;
+	margin: 8px 0 0 10px;	
+	text-transform:capitalize;
+	vertical-align: none;
+}

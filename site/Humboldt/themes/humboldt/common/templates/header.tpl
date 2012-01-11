@@ -131,7 +131,7 @@
         {if $moduleID != 'home' || !$breadcrumb@first}
           <a href="{$breadcrumb['url']|sanitize_url}" {if isset($crumbClass)}class="{$crumbClass}{/if}">
             {if $breadcrumb@first}
-              <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" />
+              {$moduleID}
             {else}
               <span>{$breadcrumb['title']|sanitize_html:'inline'}</span>
             {/if}
@@ -162,10 +162,10 @@
             
             {$breadcrumbHTML}
             <span class="pagetitle">
-              {if $isModuleHome}
-                <img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" class="moduleicon" />
-              {/if}
-              {$pageTitle|sanitize_html:'inline'}
+              {if $isModuleHome}              
+              {$moduleID}
+			<!--<img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" class="moduleicon" /> -->
+			  {/if}
             </span>
           </div>
           {if $hasHelp}

@@ -30,9 +30,9 @@ fieldset { margin: 0; }
 ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; text-shadow: 0 1px 0 #fff; padding: 4px 0 0 1px; }
 		
 #search-bg2 { width: 100%; margin: 0 auto; height: 50px; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
-.pagetitle { height: 22px; line-height: 16pt; font-family: 'Lucida Grande' sans-serif; font-weight: normal; font-size: 8pt; color: #fff;  padding: 5px 0 6px;  }
+.pagetitle { /*height: 22px;*/ line-height: 16pt; font-family: 'Lucida Grande' sans-serif; font-weight: normal; /*font-size: 8pt;*/ color: #fff;  padding: 5px 0 6px;  }
 .breadcrumbs { background: url(/common/images/compliant/crumbs-top.png) top center no-repeat; width: 100%; }	
-	.breadcrumbs a img { display: block; float: left; margin-top: 2px; }
+/*	.breadcrumbs a img { display: block; float: left; margin-top: 2px;}*/
 #additional-input { clear: both; background: #000; height: 50px; }
 	
 #content-start { width: 100%; height: 22px; background: #fff url(/common/images/compliant/content-top-bg.png) repeat-x; }	
@@ -42,7 +42,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 
 
 .nonfocal form { margin-left: -4px; margin-right: 8px; }
-.nav a, .results a, .secondary a, a.arrow {  }
+.nav a, .results a, .secondary a, a.ar&raquo;	ow {  }
 .nav li.icon a { margin: 0; position: inherit; background-size: 42px 52px; }
 #navbar.helpon { padding-right: 0; }
 .results li.story { padding: 1px 10px; }
@@ -234,14 +234,14 @@ dt, .label, .legend, .legend h2, .legend h3, .searchlegend {
 /* Nav bar at top of all screens other than home screen */
 
 #navbar {
-	height: 22px; margin: 0;
-	background: transparent url(/common/images/compliant/crumbs-bg.png) repeat-x;
+	margin: 0;
+/*	background: transparent url(/common/images/compliant/crumbs-bg.png) repeat-x;*/
 	font-size: 94.1%;
 }
 
 .breadcrumbs, .breadcrumbs a, .breadcrumbs a:visited, .pagetitle { }
 
-.breadcrumbs a { display: inline; height: inherit; line-height:inherit; vertical-align: inherit; margin-left: none; padding: 0 10px; background-image: none; text-decoration: none; color: #fff; } 
+.breadcrumbs a { display: inline; height: inherit; line-height:inherit; /*vertical-align: inherit;*/ margin-left: 0; padding:5px 10px 0 10px; background-image: none; text-decoration: none; color: #fff; } 
 
 /* Navigation and results lists */
 
