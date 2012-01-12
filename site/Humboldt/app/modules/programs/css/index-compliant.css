@@ -14,12 +14,14 @@
 }
 #category-switcher .inputfield select,
 #category-switcher .inputfield input[type=text] {
-    width: 99.9%;
-    margin: 0;
+    width: 95%;
+    margin: 0 0 0 10px;
+    margin-top: 12px;
 }
 #category-switcher .inputfield input[type=text] {
     line-height: 1.25em;
     padding-left: .25em;
+    margin-top: 24px;
 }
 #category-switcher .formlabel {
 	width: 62px;
@@ -32,6 +34,8 @@
 }
 #category-form .toggle-search-button {
     padding: 0 .5em 0 .5em;
+    float: right;
+    margin-top: 27px;
 }
 #category-switcher #search-form .togglefield {
     width: 4em;
@@ -40,6 +44,8 @@
 #search-form .toggle-search-button {
 	font-size: 89%;
 	margin-left: .3em;
+	float: right;
+	margin-top: 17px;
 }
 form {
 	margin: -8px 0 0 0;
@@ -59,7 +65,8 @@ form {
     font-size: 88.23%;
 }
 .header {
-    padding: 5px 0;
+    padding: 0;
+/*    margin: 0; height: 74px; background: #11543a url(/common/images/compliant/search-bg5.png) top repeat-x;*/
 }
 
 .header button {

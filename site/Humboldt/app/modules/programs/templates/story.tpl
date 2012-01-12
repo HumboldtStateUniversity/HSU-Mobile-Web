@@ -10,8 +10,8 @@
 <div class="news">
   <h1 class="slugline">{if $showLink}<a href="{$link}">{/if}{$title}{if $showLink}</a>{/if}</h1>
 
-  <div id="storysubhead">
-    {include file="findInclude:common/templates/share.tpl" shareURL={$storyURL} shareRemark={$shareRemark} shareEmailURL={$shareEmailURL}}
+  {*{<div id="storysubhead">
+    include file="findInclude:common/templates/share.tpl" shareURL={$storyURL} shareRemark={$shareRemark} shareEmailURL={$shareEmailURL}}
             
     {if $pager['pageNumber'] == 0}
         <p class="byline">
@@ -25,7 +25,7 @@
           {/block}
         </p>    
     {/if}        
-  </div><!--storysubhead-->
+  </div><!--storysubhead-->*}
   
   <div id="story">
     {if $pager['pageNumber'] == 0}
