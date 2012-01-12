@@ -7,7 +7,7 @@
 
 /* =========================================== HOME ==================================================== */
 	
-	
+.HomeModule h1#homelogo { margin: 10px 0 6px; }
 .HomeModule ul.nav { background: none; background-image: none; border: none; padding: 0; margin: 10px; }
 .HomeModule ul.nav li.icon { background: #fff; background-image: none; clear: both; border: 1px solid #d8d8d8; padding: 0; margin: 1px 0px 0px 0px; background: #ffffff; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #c8d4d2 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; min-height: 52px; }
 	.HomeModule ul.nav li.icon a { text-indent: 8px; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; font-size: 12pt; line-height: 10pt; color: #005147; text-decoration: none; display: block; padding: 12px 0 0 0px; width: 100%; min-height: 42px; background: url(/common/images/arrow-right.png) bottom right no-repeat; }
