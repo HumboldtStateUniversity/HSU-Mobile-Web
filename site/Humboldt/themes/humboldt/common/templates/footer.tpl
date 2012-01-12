@@ -42,14 +42,14 @@
   {if $moduleID != 'home'}
   	<div id="persistent-nav">
   		<ul>
-  			<li><a href="#">Mobile Home</a></li>
+  			<li><a href="/home">Mobile Home</a></li>
   			<li><a href="/people">Directory</a></li>
-   			<li><a href="/calendar">Events Calendar</a></li>
+   			<li><a href="/calendar">Events</a></li>
   			<li><a href="/news">News</a></li>
+				<li><a href="/athletics">Athletics</a></li>
   			<li><a href="/programs">Programs</a></li>
-  			<li><a href="/maps">Maps</a></li>
-  			<li><a href="/athletics">Athletics</a></li>
-  			<li><a href="/emergency">Emergency Info</a></li>
+  			<li><a href="/map">Maps</a></li>
+  			<li><a href="/emergency">Emergency</a></li>
   		</ul>
   	</div><!-- #persistent-nav -->
 
@@ -57,7 +57,7 @@
   
     <div id="footer">
         {$footerHTML}
-    	<p id="f-navblock"><span class="color"><a href="http://humboldt.edu">&laquo; Full Site</a></span> | Facebook | Flickr | Tumblr</p>
+    	<p id="f-navblock"><span class="color"><a href="http://humboldt.edu">&laquo; Full Site</a></span> | <a href="http://www.facebook.com/humboldtstatealumni">Facebook</a> | <a href="http://m.flickr.com/photos/humboldtstate">Flickr</a> | <a href="http://twitter.com/humboldtstate">Twitter</a></p>
     	<p id="f-contact-info"><span class="color large"><a href="http://humboldt.edu">Humboldt State University</a></span><br />1 Harpst Street<br />Arcata, CA 95521<br />707-826-3011</p>
     </div>
   {/block}
