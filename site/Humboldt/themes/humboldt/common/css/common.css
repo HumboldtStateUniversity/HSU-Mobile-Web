@@ -8,10 +8,11 @@
 
 #container { margin: 0; padding: 0; }
 
-#searchformcontainer { margin: 0; padding: 0 14px; min-height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
-	#searchformcontainer .searchwrapper { width: 100%; min-height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
 
-.nonfocal form {margin-right: 8px; }
+/*#searchformcontainer { margin: 0; padding: 0 14px; min-height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
+	#searchformcontainer .searchwrapper { width: 100%; min-height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }*/
+
+/*.nonfocal form {margin-right: 8px; }*/
 #searchformcontainer { margin: 0; padding: 0 14px; height: 50px; background: #044531 url(/common/images/compliant/search-bg.png) top repeat-x; }
 	#searchformcontainer .searchwrapper { width: 100%; height: 50px; position: relative; background: url(/common/images/compliant/search-bg2.png) center center no-repeat; }
 
@@ -22,7 +23,7 @@
 	
 fieldset { margin: 0; }
 .inputcombo .combobutton { position: absolute; z-index: 10; top: 13px; right: 10px; width: 27px; height: 26px; }
-.inputcombo .forminput { margin: 5px 10px 0 10px; }
+.inputcombo .forminput { margin: 5px 0; }
 .springboard { overflow: auto; border-bottom: 1px solid #177368; }
 
 #content { padding: 9px 0 10px 0; border-bottom: 1px solid #177368; }
@@ -41,7 +42,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.content-area p { padding: 0 10px; }
 
 
-.nonfocal form { margin-left: -4px; margin-right: 8px; }
+/*.nonfocal form { margin-left: -4px; margin-right: 8px; }*/
 .nav a, .results a, .secondary a, a.ar&raquo;	ow {  }
 .nav li.icon a { margin: 0; position: inherit; background-size: 42px 52px; }
 #navbar.helpon { padding-right: 0; }
@@ -75,7 +76,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.PeopleModule #searchformcontainer .searchwrapper, .MapModule #searchformcontainer .searchwrapper, .header #category-switcher, .ProgramsModule #searchformcontainer .searchwrapper { width: 100%; height: 74px; position: relative; background: url(/common/images/compliant/search-bg4.png) top center no-repeat;
 	}	
 			.PeopleModule #searchformcontainer .emphasized .forminput, .MapModule #searchformcontainer .emphasized .forminput { margin-top: 21px; }
-.PeopleModule ul.nav { margin: 0; }	
+.PeopleModule ul.nav { margin: 8px 5px; }	
 	.PeopleModule ul.secondary li:first-child { border-top: 1px solid #b9cac1; }
 .PeopleModule .secondary { border-radius: 0px; }
 	
@@ -87,6 +88,14 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .PeopleModule .inputcombo .forminput, .MapModule .inputcombo .forminput, #news-category-select, .ProgramsModule .inputcombo .forminput, .CalendarModule .inputcombo .forminput { margin: 17px 0 0 0px; border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;
 }
 
+.HomeModule .inputcombo .forminput {
+	border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;	
+}
+/*.HomeModule .nonfocal form {
+	margin:0 20px 0 -10px;
+}*/
+/*the test*/
+.nonfocal form { margin-right: 10px}
 /* ==================================== CALENDAR ==================================================== */
 
 
@@ -185,8 +194,9 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 		
 		
 /* Overall colors and fonts */
-
-body { background: #044531 url(/common/images/compliant/header-bg.jpg) top center no-repeat; font: 17px/1.33em sans-serif; }
+/*#044531 url(/common/images/compliant/header-bg.jpg) top center no-repeat*/
+body.HomeModule { background-color: #044531; font: 17px/1.33em sans-serif; }
+body {background-color: #044531; font: 17px/1.33em sans-serif;}
 
 body, th, td, li, option, select, input { color: #00463d; }
 
