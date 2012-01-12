@@ -1,60 +1,35 @@
 /* Overall font and colors */
 
-body {
-	/* Primary font */
-	font: 14px/1.25em sans-serif;
-}
-
-h1 {
-	font-size: 142%; 
-	color: #005147;
-}
-
-h2 {
-	font-size: 133%; 
-	font-weight: normal;
-	color: #005147;
-}
-
-h3 {
-	font-size: 100%; 
-	font-weight: bold;
-	color: #005147;
-}
-
-h4 {
-	font-size: 100%; 
-	font-weight: bold;
-	color: #005147;
-}
-
-
+body { font: 14px/1.25em sans-serif; background-image: none; background: #00463D; }
+h1 { font-size: 142%;  color: #fff; }
+h2 { font-size: 133%;  font-weight: normal; color: #005147; }
+h3 { font-size: 100%;  font-weight: bold; color: #005147; }
+h4 { font-size: 100%;  font-weight: bold; color: #005147; }
 
 /* Standard navigation at bottom of all Basic pages */
 
-.bottomnav {
-	/* Usually set apart in a foreground/background color combination different from normal and secondary nav lists  */
-	background-color: #4a4c4f;	
-	font-size: 93%;
-}
-
-.bottomnav a, .bottomnav a:visited {
-	/* Navigation at bottom of page -- e.g., "Back to top" */
-	color: #fff; 
-}
-
-
+.bottomnav { background-color: #4a4c4f; font-size: 93%; }
+.bottomnav a, .bottomnav a:visited { color: #fff;  }
 
 /* Tabs */
 
-.tabs {
-	/* Text labels of unselected tab */
-	color: #999;
-}
+.tabs { color: #999; }
+.tabs .active {  font-weight: bold; color: #000; }
 
-.tabs .active {
-	/* Text label of currently selected tabs */
-	font-weight: bold;
-	color: #000;
-}
+h1#homelogo img { margin: 0 auto; display: block; }
+.nonfocal, .nonfocal .legend, .formlabel { color: #fff; }
+.nonfocal p.fontsize { text-align: center; border-top: 1px solid #003E14; margin: 0; padding: 4px 0; }
+	.nonfocal p.fontsize a { color: #e5e2b9; }
+.inputcombo .submitbutton { background-color: #fff; padding: 1px 10px; border: 1px solid #003E14; color: #003e14; font-size: 93.75%; -moz-border-radius: 15px; -webkit-border-radius: 15px; border-radius: 15px; }
+.emphasized .forminput { border: 1px solid #003E14; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.nav, .results, .nav a, .nav a:visited, .nav span.nolink, .results a, .results a:visited { color: #003e14; }
 
+#container { padding: 0; margin: 0; }
+	#container p#footer { background-image: none; background: transparent; height: 5px; }
+	
+.bottomnav { background-color: transparent; font-size: 93%; }
+
+
+.EmergencyModule .focal { padding: 10px; }
+
+.PeopleModule .inputcombo .forminput { margin: 2px 0 0 0px; }
