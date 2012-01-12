@@ -42,7 +42,7 @@
   {if $moduleID != 'home'}
   	<div id="persistent-nav">
   		<ul>
-  			<li><a href="#">Mobile Home</a></li>
+  			<li><a href="/home">Mobile Home</a></li>
   			<li><a href="/people">Directory</a></li>
    			<li><a href="/calendar">Events</a></li>
   			<li><a href="/news">News</a></li>
