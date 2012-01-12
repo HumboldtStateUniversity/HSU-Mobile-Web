@@ -1,9 +1,9 @@
 {include file="findInclude:common/templates/header.tpl" scalable=false}
-<div id="search-text">
+<!--<div id="search-text">
 	<div id="search-text-inner">
       	<p>The latest events from around campus.</p>
 	</div>	
-</div><!-- #search-text -->
+</div>--><!-- #search-text -->
 {include file="findInclude:common/templates/search.tpl" additionalInputs=$selectSection}
 
 <div class="content-area">

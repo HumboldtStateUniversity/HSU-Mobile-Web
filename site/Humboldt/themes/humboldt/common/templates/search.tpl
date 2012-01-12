@@ -34,8 +34,8 @@
 {/capture}
 
 {block name="form"}
- 
-  {if $moduleID == 'people'}
+ <!--disable search text-->
+  {*{if $moduleID == 'people'}
     <div id="search-text">
     	<div id="search-text-inner">
       	<p>Enter a person's name, department, email address , telephone number, location, or title.</p>
@@ -48,7 +48,7 @@
       	<p>The latest news from around campus.</p>
       	</div><!-- search-text-inner -->
 	</div><!-- #search-text -->
-	{/if}
+	{/if}*}
     <div class="nonfocal" id="searchformcontainer">
       <div class="searchwrapper">
       <form method="get" action="{$searchPage|default:'search'}">
