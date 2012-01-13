@@ -152,6 +152,8 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .NewsModule .inputcombo .forminput { margin: 17px 0 0 0px; border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;
 }
 .NewsModule ul.results li.story img { display: none; }
+.NewsModule .nonfocal { background: #fff; padding: 10px; margin: 0px; }
+
 
 /* ==================================== Emergency Module ==================================================== */
 
@@ -180,6 +182,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .ProgramsModule .results li.story { height: inherit; }
 .ProgramsModule .results li.story a { height: inherit; padding: 10px 0 0px 0; }
 .ProgramsModule .results li.story a .ellipsis { height: inherit; }
+.ProgramsModule .nonfocal { background: #fff; padding: 10px; margin: 0px; }
 
 
 /* ==================================== Maps Module ==================================================== */	
