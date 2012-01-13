@@ -4,15 +4,15 @@ function doUpdateContainerDimensions() {
     var maptab = document.getElementById("mapTab");
     if (mapimage) { 
         var topoffset = findPosY(document.getElementById("tabbodies"));
-        var bottomoffset = 0;
+        var bottomoffset = -15;
         // TODO lots of hard coding here, need better way to get these values
-        var zoomControlsHeight = 8;
+        var zoomControlsHeight = 18;
         var footernav = document.getElementById("footernav");
         if (footernav) {
             bottomoffset = 75;
         }
         var tabHeight = getWindowHeight() - topoffset - bottomoffset;
-        var tabPadding = 8;
+        var tabPadding = 8 * 2;
         maptab.style.height = (tabHeight - tabPadding) + "px";
         mapimage.style.height = (tabHeight - zoomControlsHeight - tabPadding) + "px";
     }

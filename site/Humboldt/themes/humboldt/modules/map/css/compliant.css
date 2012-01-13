@@ -1,8 +1,5 @@
 #footerlinks, #footer {display: block;}
-#tabscontainer{
-
-}
-#tabscontainer h2{
+.MapModule #tabscontainer h2{
 	padding:6px 0;
 	color:#044531;
 	font-family: 'Lucida Grande';
@@ -11,9 +8,9 @@
 	text-align:center;
 	background-color:#fff;
 	background: rgba(255, 255, 255, 0.4);
-	text-shadow: 2px 2px 0px #fff;
+	text-shadow: 0px 0px 4px #fff;
 	position:absolute;
-	top:8px;
+	top:1px;
 	left:8px;
 	right:8px; /* instead of width:100% */
 	z-index:1000;
@@ -29,13 +26,16 @@
 	line-height: 1em;
 }
 #tabbodies {
+	border:0;
 	border-radius:0; 
 	min-height: none;
 }
 .tabbody {
+	margin: 0;
 	min-height: none;
-	padding: 8px;
-	background-color:#044531;
+	padding: 1px 8px 0 8px;
+	background-color:#fff;
+	border-top:0;
 }
 
 #photoTab {
