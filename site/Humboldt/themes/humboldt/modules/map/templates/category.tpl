@@ -1,6 +1,8 @@
 {include file="findInclude:common/templates/header.tpl" scalable=false}
-
-<div class="nonfocal">
+<div id="content-start">
+    <div id="content-start-inner">
+    </div><!-- #content-start-inner -->
+</div><!-- #content-start --><div class="nonfocal">
   <h2>Browse {$title}:</h2>
 </div>
 
