@@ -33,3 +33,12 @@ h1#homelogo img { margin: 0 auto; display: block; }
 .EmergencyModule .focal { padding: 10px; }
 
 .PeopleModule .inputcombo .forminput { margin: 2px 0 0 0px; }
+
+.CalendarModule .nonfocal { background: transparent; padding: 12px 10px 6px 10px; margin: 0; margin-top: 0px; border-top: 1px solid #003E14; border-bottom: 1px solid #003e14; }
+.CalendarModule .inputcombo .forminput { margin: 0px 0 0 0px; }
+.CalendarModule p#search.nonfocal strong { display: none; }
+.CalendarModule p#search.nonfocal br { display: none; }
+
+.ProgramsModule #container { padding: 0; margin: 0; background: #fff; }
+.ProgramsModule h2 { padding: 10px; }
+.ProgramsModule #container .focal p { padding: 10px; margin: 0; border-top: 1px solid #b9cac1; }
