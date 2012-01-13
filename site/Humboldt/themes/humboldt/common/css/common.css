@@ -35,7 +35,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 #additional-input { clear: both; background: #000; height: 50px; }
 	
 #content-start { width: 100%; height: 22px; background: #fff url(/common/images/compliant/content-top-bg.png) repeat-x; }	
-		#content-start-inner { width: 100%; height: 22px; background: url(/common/images/compliant/content-top-bg2.png) top center no-repeat; }	
+		#content-start-inner { width: 100%; height: 22px; background: transparent; background-image: none; }	
 .content-area { overflow: auto; background: #fff; }	
 	.content-area p { padding: 0 10px; }
 
@@ -125,6 +125,10 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.CalendarModule .sidenav2 a.sidenav-prev { margin-left: 10px; padding-left: 25px; background: url(/common/images/compliant/sidenav-arrows-left.png) center left no-repeat; }
 	.CalendarModule .sidenav2 a.sidenav-next { margin-right: 10px; padding-right: 25px; background: url(/common/images/compliant/sidenav-arrows.png) center right no-repeat; }
 		.CalendarModule .sidenav2 a:hover { color: #e5e2b9; }
+.CalendarModule .nonfocal { margin: 0; padding: 0; }
+	.CalendarModule .nonfocal h2 { margin: 0; padding: 0; }
+
+		
 /*.CalendarModule #searchformcontainer { min-height: 50px; }*/
 /*.CalendarModule #searchformcontainer .searchwrapper { background-position: top center; }*/
 
@@ -152,6 +156,8 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .NewsModule .inputcombo .forminput { margin: 17px 0 0 0px; border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;
 }
 .NewsModule ul.results li.story img { display: none; }
+.NewsModule .nonfocal { background: #fff; padding: 10px; margin: 0px; }
+
 
 /* ==================================== Emergency Module ==================================================== */
 
@@ -180,17 +186,15 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 .ProgramsModule .results li.story { height: inherit; }
 .ProgramsModule .results li.story a { height: inherit; padding: 10px 0 0px 0; }
 .ProgramsModule .results li.story a .ellipsis { height: inherit; }
+.ProgramsModule .nonfocal { background: #fff; padding: 10px; margin: 0px; }
 
 
 /* ==================================== Maps Module ==================================================== */	
 
 
-.MapModule .nonfocal { display: none; }
 .MapModule .nav li:first-child { border-top: 1px solid #B9CAC1; }
 .MapModule .results li:first-child { border-top: 1px solid #B9CAC1; }
-.MapModule #tabscontainer { padding: 0px; margin: 0;  }
-.MapModule #tabscontainer h2 { background: transparent;  }
-.MapModule .tabbody { background-color: transparent; padding: 0; }
+
 
 /* ==================================== PERSISTENT-NAV ==================================================== */
 
