@@ -1,6 +1,6 @@
 /* Overall font and colors */
 
-body { font: 14px/1.25em sans-serif; background-image: none; background: #00463D; }
+body { font: 14px/1.25em sans-serif; background-image: none; background: #00463D; padding: 0; }
 h1 { font-size: 142%;  color: #fff; }
 h2 { font-size: 133%;  font-weight: normal; color: #005147; }
 h3 { font-size: 100%;  font-weight: bold; color: #005147; }
