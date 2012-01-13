@@ -71,7 +71,7 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.HomeModule ul.nav li.icon a { text-indent: 8px; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; font-size: 12pt; line-height: 10pt; color: #005147; text-decoration: none; display: block; padding: 12px 0 0 0px; width: 100%; min-height: 42px; background: url(/common/images/arrow-right.png) bottom right no-repeat; }
 	.HomeModule ul.nav li.icon img { display: none; }
 		.home-nav a span { color: #005147; text-indent: 0px; margin: 4px 0 0 8px; font-family: Arial, sans-serif; font-size: 9pt; font-weight: normal; display: block; clear: both; width: 100%; }
-.HomeModule h3.nonfocal { font-size: 12pt; background: #005147; color: #fff; width: 100%; margin: 0px 0; padding: 8px 10px; text-shadow: 1px 1px 1px #003b34; font-size: }
+.HomeModule h3.nonfocal { font-size: 12pt; background: #005147; color: #fff; width: 100%; margin: 0px 0; padding: 8px 0; text-shadow: 1px 1px 1px #003b34; text-indent:10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 	.HomeModule h3.nonfocal span { padding: 0 10px; font-weight: normal; font-size: 10pt; }		
 .HomeModule .page-title { background: transparent; padding: 0; display: none; }
 .HomeModule .emphasized { margin: 0px 0; }
