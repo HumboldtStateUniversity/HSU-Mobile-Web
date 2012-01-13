@@ -185,7 +185,6 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 /* ==================================== Maps Module ==================================================== */	
 
 
-.MapModule .nonfocal { display: none; }
 .MapModule .nav li:first-child { border-top: 1px solid #B9CAC1; }
 .MapModule .results li:first-child { border-top: 1px solid #B9CAC1; }
 .MapModule #tabscontainer { padding: 0px; margin: 0;  }
