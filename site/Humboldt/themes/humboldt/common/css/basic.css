@@ -34,6 +34,11 @@ h1#homelogo img { margin: 0 auto; display: block; }
 
 .PeopleModule .inputcombo .forminput { margin: 2px 0 0 0px; }
 
+.NewsModule #container p#footer { background: #00463d; }
+.NewsModule .nonfocal .fontsize { background: #00463d; }
+.NewsModule #container h2 { color: #fff; }
+
+
 .CalendarModule .nonfocal { background: transparent; padding: 12px 10px 6px 10px; margin: 0; margin-top: 0px; border-top: 1px solid #003E14; border-bottom: 1px solid #003e14; }
 .CalendarModule .inputcombo .forminput { margin: 0px 0 0 0px; }
 .CalendarModule p#search.nonfocal strong { display: none; }
@@ -41,4 +46,9 @@ h1#homelogo img { margin: 0 auto; display: block; }
 
 .ProgramsModule #container { padding: 0; margin: 0; background: #fff; }
 .ProgramsModule h2 { padding: 10px; }
-.ProgramsModule #container .focal p { padding: 10px; margin: 0; border-top: 1px solid #b9cac1; }
+.ProgramsModule .nonfocal { background: #00463D; padding: 10px; margin: 0px; }
+.ProgramsModule .nonfocal a { color: #fff; }
+.ProgramsModule .inputcombo .forminput { margin: 2px 0 0 0px; }
+
+#container .focal { margin: 0; padding: 0; }
+#container .focal p { padding: 10px; margin: 0; border-top: 1px solid #b9cac1; }
