@@ -159,9 +159,9 @@
             <a href="{$homeLink}" class="homelink" title="{$homeLinkText}">
               <img src="/common/images/homelink.png" width="{$homelink_image_width|default:57}" height="{$homelink_image_height|default:45}" alt="{$homeLinkText}" />
             </a>
-            
-            {$breadcrumbHTML}
             <span class="pagetitle">
+            {$breadcrumbHTML}
+            
               {if $isModuleHome}              
               {$moduleID}
 			<!--<img src="/common/images/title-{$navImageID|default:$configModule}.png" width="{$module_nav_image_width|default:28}" height="{$module_nav_image_height|default:28}" alt="" class="moduleicon" /> -->
