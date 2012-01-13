@@ -125,6 +125,10 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	.CalendarModule .sidenav2 a.sidenav-prev { margin-left: 10px; padding-left: 25px; background: url(/common/images/compliant/sidenav-arrows-left.png) center left no-repeat; }
 	.CalendarModule .sidenav2 a.sidenav-next { margin-right: 10px; padding-right: 25px; background: url(/common/images/compliant/sidenav-arrows.png) center right no-repeat; }
 		.CalendarModule .sidenav2 a:hover { color: #e5e2b9; }
+.CalendarModule .nonfocal { margin: 0; padding: 0; }
+	.CalendarModule .nonfocal h2 { margin: 0; padding: 0; }
+
+		
 /*.CalendarModule #searchformcontainer { min-height: 50px; }*/
 /*.CalendarModule #searchformcontainer .searchwrapper { background-position: top center; }*/
 
