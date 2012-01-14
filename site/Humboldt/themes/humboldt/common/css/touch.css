@@ -3,6 +3,7 @@
 body {
 	/* Touch uses a slightly different base font size */
 	font: 16px/1.33em sans-serif;
+	background-color: #00463D;
 }
 
 
