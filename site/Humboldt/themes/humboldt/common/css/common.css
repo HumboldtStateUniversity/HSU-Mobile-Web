@@ -209,14 +209,27 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 /* =========================================  FOOTER ======================================================= */
 
 
-#container #footer { text-shadow: 0 1px 0 #09462f; padding-top: 0px; margin: 0; border-top: 1px solid #003e14; width: 100%; min-height: 147px; background: #044632 url(/common/images/compliant/footer-bg.jpg) top center no-repeat; color: #fff; }
+#container #footer { text-shadow: 0 1px 0 #09462f; padding-top: 20px; margin: 0; border-top: 1px solid #003e14; width: 100%; min-height: 147px; background: #044632 url(/common/images/compliant/footer-bg.jpg) top center no-repeat; color: #fff; }
 	#footer a { color: #fff; text-decoration: none; }
 	#footer span.color a, #container #footer span.color { color: #e5e2b9; }
 	#footer span.large { font-weight: bold; font-size: 12pt; font-family: 'Lucida Grande', sans-serif; }
-	#footer #f-navblock { font-family: Arial, sans-serif; text-align: center; padding-top: 4px;}
-	#footer #f-contact-info { font-family: Arial, sans-serif; text-align: right; margin: 15px 10px 0 0; font-size: 9pt; line-height: 14pt; }
-	
-		
+	#footer #f-navblock { font-family: Arial, sans-serif; text-align: center; padding-top: 10px;}
+	#footer #f-contact-info { font-family: Arial, sans-serif; text-align: center; margin: 15px 10px 0 0; font-size: 9pt; line-height: 14pt; }
+/*#footer p.f-buttons {
+	float: left;
+	margin:5px 5px;
+}	*/
+#footer .f-buttons a {
+	padding: .75em 3em;
+	text-shadow: none;
+	border: 1px solid #d8d8d8;
+	color: #005147;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;
+}
+#footer .f-buttons a.last {
+	margin-left: 10px;
+}
+/*{background: #fff; background-image: none; clear: both; border: 1px solid #d8d8d8; padding: 0; margin: 1px 0px 0px 0px; background: #ffffff; background: #ffffff; background: -moz-linear-gradient(top,  #ffffff 0%, #c8d4d2 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 *!/ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px; min-height: 52px;}*/
 		
 /* Overall colors and fonts */
 /*#044531 url(/common/images/compliant/header-bg.jpg) top center no-repeat*/
