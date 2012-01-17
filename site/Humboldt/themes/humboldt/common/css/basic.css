@@ -53,7 +53,7 @@ h1#homelogo img { margin: 0 auto; display: block; }
 #container .focal { margin: 0; padding: 0; }
 #container .focal p { padding: 10px; margin: 0; border-top: 1px solid #b9cac1; }
 
-.AthleticsModule .nonfocal .fineprint a {
+.nonfocal .fineprint a {
 	color: #fff;
 }
 .AthleticsModule .nonfocal {
