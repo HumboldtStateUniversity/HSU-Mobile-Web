@@ -34,13 +34,13 @@ h4 {
 
 .bottomnav {
 	/* Usually set apart in a foreground/background color combination different from normal and secondary nav lists  */
-	background-color: #4a4c4f;	
+	background-color: #fff;	
 	font-size: 93%;
 }
 
 .bottomnav a, .bottomnav a:visited {
 	/* Navigation at bottom of page -- e.g., "Back to top" */
-	color: #fff; 
+	color: #4a4c4f; 
 }
 
 

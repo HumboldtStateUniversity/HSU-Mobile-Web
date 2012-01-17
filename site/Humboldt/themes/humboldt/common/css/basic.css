@@ -1,6 +1,6 @@
 /* Overall font and colors */
 
-body { font: 14px/1.25em sans-serif; background-image: none; background: #00463D; padding: 0; }
+body { font: 14px/1.25em sans-serif; background-image: none; background: #044531; padding: 0; }
 h1 { font-size: 142%;  color: #fff; }
 h2 { font-size: 133%;  font-weight: normal; color: #005147; }
 h3 { font-size: 100%;  font-weight: bold; color: #005147; }
@@ -8,8 +8,8 @@ h4 { font-size: 100%;  font-weight: bold; color: #005147; }
 
 /* Standard navigation at bottom of all Basic pages */
 
-.bottomnav { background-color: #4a4c4f; font-size: 93%; }
-.bottomnav a, .bottomnav a:visited { color: #fff;  }
+.bottomnav { background-color: #fff; font-size: 93%; }
+.bottomnav a, .bottomnav a:visited { color: #044531;  }
 
 /* Tabs */
 
@@ -27,28 +27,38 @@ h1#homelogo img { margin: 0 auto; display: block; }
 #container { padding: 0; margin: 0; }
 	#container p#footer { background-image: none; background: transparent; height: 5px; }
 	
-.bottomnav { background-color: transparent; font-size: 93%; }
+/*.bottomnav { background-color: transparent; font-size: 93%; }*/
 
 
-.EmergencyModule .focal { padding: 10px; }
+.EmergencyModule #container .focal { padding-left: 10px; }
 
-.PeopleModule .inputcombo .forminput { margin: 2px 0 0 0px; }
-
-.NewsModule #container p#footer { background: #00463d; }
-.NewsModule .nonfocal .fontsize { background: #00463d; }
-.NewsModule #container h2 { color: #fff; }
-
-
-.CalendarModule .nonfocal { background: transparent; padding: 12px 10px 6px 10px; margin: 0; margin-top: 0px; border-top: 1px solid #003E14; border-bottom: 1px solid #003e14; }
-.CalendarModule .inputcombo .forminput { margin: 0px 0 0 0px; }
-.CalendarModule p#search.nonfocal strong { display: none; }
-.CalendarModule p#search.nonfocal br { display: none; }
+/*.PeopleModule .inputcombo .forminput { margin: 2px 0 0 0px; }*/
+.HomeModule form {
+	padding-left: 10px;
+}
+.itemtitle {
+	padding:10px 0 0 10px;
+}
+.PeopleModule .nonfocal, .MapModule .nonfocal, .CalendarModule .nonfocal { background: transparent; padding: 12px 10px 6px 10px; margin: 0; margin-top: 0px; border-top: 1px solid #003E14; border-bottom: 1px solid #003e14; }
+.PeopleModule .inputcombo .forminput, .MapModule .nonfocal .inputcombo .forminput, .CalendarModule .inputcombo .forminput { margin: 0px 0 0 0px; }
+.PeopleModule p#search.nonfocal strong, .MapModule p#search.nonfocal strong, .CalendarModule p#search.nonfocal strong { display: none; }
+.PeopleModule p#search.nonfocal br, .MapModule p#search.nonfocal br, .CalendarModule p#search.nonfocal br { display: none; }
 
 .ProgramsModule #container { padding: 0; margin: 0; background: #fff; }
 .ProgramsModule h2 { padding: 10px; }
-.ProgramsModule .nonfocal { background: #00463D; padding: 10px; margin: 0px; }
-.ProgramsModule .nonfocal a { color: #fff; }
-.ProgramsModule .inputcombo .forminput { margin: 2px 0 0 0px; }
+.NewsModule .nonfocal, .ProgramsModule .nonfocal { background: #044531; padding: 10px; margin: 0px; }
+.NewsModule .nonfocal a, .ProgramsModule .nonfocal a { color: #fff; }
+.NewsModule .nonfocal .inputcombo .forminput , .ProgramsModule .inputcombo .forminput { margin: 2px 0 0 0px; }
 
 #container .focal { margin: 0; padding: 0; }
 #container .focal p { padding: 10px; margin: 0; border-top: 1px solid #b9cac1; }
+
+.AthleticsModule .nonfocal .fineprint a {
+	color: #fff;
+}
+.AthleticsModule .nonfocal {
+	padding-left: 10px;
+}
+.fineprint {
+	color: #fff;
+}
