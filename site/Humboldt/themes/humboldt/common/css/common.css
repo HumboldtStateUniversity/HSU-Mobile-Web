@@ -215,16 +215,15 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 	#footer span.large { font-weight: bold; font-size: 12pt; font-family: 'Lucida Grande', sans-serif; }
 	#footer #f-navblock { font-family: Arial, sans-serif; text-align: center; padding-top: 10px;}
 	#footer #f-contact-info { font-family: Arial, sans-serif; text-align: center; margin: 15px 10px 0 0; font-size: 9pt; line-height: 14pt; }
-/*#footer p.f-buttons {
-	float: left;
-	margin:5px 5px;
-}	*/
+#footer p.f-buttons {
+	text-align: center;
+}	
 #footer .f-buttons a {
 	padding: .75em 3em;
 	text-shadow: none;
 	border: 1px solid #d8d8d8;
 	color: #005147;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#c8d4d2)); background: -webkit-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -o-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: -ms-linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); background: linear-gradient(top,  #ffffff 0%,#c8d4d2 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c8d4d2',GradientType=0 ); /* IE6-9 */ -webkit border-radius: 3px; -moz-border-radius: 3px; border-radius: 4px;background-color: #f1f1f1;
 }
 #footer .f-buttons a.last {
 	margin-left: 10px;
