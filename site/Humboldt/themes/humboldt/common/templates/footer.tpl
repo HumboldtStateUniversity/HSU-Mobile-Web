@@ -57,7 +57,7 @@
   
     <div id="footer">
         {$footerHTML}
-        <p class="f-buttons"><a href="http://humboldt.edu">Full site</a><a href="mailto:webadmin@humboldt.edu" class="last">Feedback</a></p>
+        <p class="f-buttons"><a href="http://localhost:8888/ee_sandbox/?switch=0">Full site</a><a href="mailto:webadmin@humboldt.edu" class="last">Feedback</a></p>
     	<p id="f-navblock"><a href="http://www.facebook.com/humboldtstatealumni">Facebook</a> | <a href="http://m.flickr.com/photos/humboldtstate">Flickr</a> | <a href="http://twitter.com/humboldtstate">Twitter</a></p>
     	<p id="f-contact-info"><span class="color large"><a href="http://humboldt.edu">Humboldt State University</a></span><br />1 Harpst Street<br />Arcata, CA 95521<br />707-826-3011</p>
     </div>
