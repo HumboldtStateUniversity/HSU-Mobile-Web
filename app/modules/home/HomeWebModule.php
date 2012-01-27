@@ -71,6 +71,8 @@ class HomeWebModule extends WebModule {
         } else {
           $this->assign('modules', $this->getModuleNavList());
           $this->assign('hideImages', $this->getOptionalModuleVar('HIDE_IMAGES', false));
+          $this->addInternalJavascript('/common/javascript/add2home.js');
+          $this->addInternalCSS('/common/css/add2home.css');
           
           
           
