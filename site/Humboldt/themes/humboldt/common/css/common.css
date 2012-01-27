@@ -98,10 +98,6 @@ ul.nav li a span { display: block; clear: both; font-size: 8pt; color: #5e5d5d; 
 /*.PeopleModule .inputcombo .forminput { height: 38px; }  */
 .PeopleModule .inputcombo .forminput, .MapModule .inputcombo .forminput, #news-category-select, .ProgramsModule .inputcombo .forminput, .CalendarModule .inputcombo .forminput { margin: 17px 0 0 0px; border: 1px 1px 1px solid #666; border-bottom-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px;
 }
-
-.PeopleModule ul.nav { margin: 0; }
-
-
 /* ==================================== PROGRAMS ==================================================== */
 
 .ProgramsModule #news-category-select select.newsinput { padding: 20px 0; }
